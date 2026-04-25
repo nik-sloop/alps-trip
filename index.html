@@ -384,6 +384,26 @@
   .badge-cost   { background: #f0edf8; color: #5a4090; }
   .badge-tip    { background: #fff8e0; color: #8a6800; }
 
+  .alltrails-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 1px 8px 1px 6px;
+    border-radius: 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+    background: #e8f5e9;
+    color: #2e7d32;
+    text-decoration: none;
+    margin-left: 6px;
+    vertical-align: middle;
+    transition: background 0.15s, color 0.15s;
+  }
+  .alltrails-link:hover { background: #c8e6c9; color: #1b5e20; }
+  .alltrails-link svg { width: 10px; height: 10px; flex-shrink: 0; }
+
   .section-label {
     font-family: 'DM Mono', monospace;
     font-size: 0.58rem;
@@ -910,14 +930,14 @@
         <div class="day-body">
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Innsbruck → Garmisch-Partenkirchen <span class="badge badge-warn">6:38am</span></div><div class="item-detail">Arrives 7:57am (~1hr 20min). Early start is non-negotiable.</div></div></div>
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚞</div><div class="item-content"><div class="item-label">Cogwheel Train (RB64) → Eibsee</div><div class="item-detail">8:15am or 9:15am, 45min. €2.10 one-way or €7 day pass — buy the day pass.</div></div></div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Lake Eibsee Loop — 4.5 miles</div><div class="item-detail">Start on the right side. Turquoise lake with Zugspitze as backdrop. Flat and easy.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Lake Eibsee Loop — 4.5 miles <a href="https://www.alltrails.com/trail/germany/bavaria/eibsee-rundweg--3" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">Start on the right side. Turquoise lake with Zugspitze as backdrop. Flat and easy.</div></div></div>
           <div class="item" data-cat="activity"><div class="item-icon icon-ticket">🏔️</div><div class="item-content"><div class="item-label">Zugspitze Cable Car <span class="badge badge-warn">Book Early</span></div><div class="item-detail">€69/pp. Germany's highest peak. Tickets may only open 30 days out — watch from April 10.</div></div></div>
           <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Panorama Lounge 2962</div><div class="item-detail">Lunch at the Zugspitze summit. Altitude dining at 9,718ft.</div></div></div>
           <div class="section-label">Afternoon</div>
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚞</div><div class="item-content"><div class="item-label">Cogwheel → Garmisch, Bus to Partenkirchen</div><div class="item-detail">2:15pm train → Garmisch. 3:02pm bus 321/322 → Partenkirchen (10min).</div></div></div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Partnachklamm Gorge <span class="badge badge-cost">€10/pp</span></div><div class="item-detail">30min one way. Dramatic narrow gorge — a completely different experience from the lake.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Partnachklamm Gorge <span class="badge badge-cost">€10/pp</span> <a href="https://www.alltrails.com/trail/germany/bavaria/partnachklamm-weg" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">30min one way. Dramatic narrow gorge — a completely different experience from the lake.</div></div></div>
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Return: Garmisch → Innsbruck (RB6)</div><div class="item-detail">6:02pm–7:23pm. Back for dinner in Innsbruck.</div></div></div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-tip">💡</div><div class="item-content"><div class="item-label">Backup: Mount Wank Cable Car <span class="badge badge-tip">Alt.</span></div><div class="item-detail">€30, confirmed open. 1.4mi loop. If Zugspitze sells out or weather closes the peak.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-tip">💡</div><div class="item-content"><div class="item-label">Backup: Mount Wank Cable Car <span class="badge badge-tip">Alt.</span> <a href="https://www.alltrails.com/trail/germany/bavaria/wank-rundweg" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">€30, confirmed open. 1.4mi loop. If Zugspitze sells out or weather closes the peak.</div></div></div>
           <div class="cat-empty"></div>
         </div>
       </div>
@@ -935,8 +955,8 @@
         <div class="day-body">
           <div class="item" data-cat="activity"><div class="item-icon icon-ticket">🎟️</div><div class="item-content"><div class="item-label">Nordkette 3 Cable Cars <span class="badge badge-booked">Booked</span></div><div class="item-detail">$208 total (4 tickets). Ascend 8–9:30am time slot. Top of Innsbruck, high alpine terrain.</div></div></div>
           <div class="item" data-cat="food"><div class="item-icon icon-food">☕</div><div class="item-content"><div class="item-label">Breakfast: Cloud 9 / Seegrube</div><div class="item-detail">Coffee and pastries at mid-station with panoramic Alpine views. Start the day right.</div></div></div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Nordkette Hike — ~3 miles</div><div class="item-detail">Nik has routes saved. High alpine. Expect snow patches above 2000m in May.</div></div></div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-tip">💡</div><div class="item-content"><div class="item-label">Alt: Hafelekar–Seegrube Downhill · 2.4mi <span class="badge badge-tip">Easy</span></div><div class="item-detail">Chill safe option — hike downhill from Hafelekar to Seegrube if weather allows.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Nordkette Hike — ~3 miles <a href="https://www.alltrails.com/trail/austria/tyrol/goetheweg-karstube-zur-pfeishutte" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">Nik has routes saved. High alpine. Expect snow patches above 2000m in May.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-tip">💡</div><div class="item-content"><div class="item-label">Alt: Hafelekar–Seegrube Downhill · 2.4mi <span class="badge badge-tip">Easy</span> <a href="https://www.alltrails.com/trail/austria/tyrol/hafelekar-hafelekarspitze-und-seegrube" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">Chill safe option — hike downhill from Hafelekar to Seegrube if weather allows.</div></div></div>
           <div class="section-label">Afternoon Transfer</div>
           <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Lunch by the Inn River, Innsbruck</div><div class="item-detail">Riverside lunch in Old Town before departing south.</div></div></div>
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Innsbruck → Bolzano <span class="badge badge-tip">Skip Eurorail</span></div><div class="item-detail">S3 to Brenner (€11/pp) then Bolzano Card covers the rest. ~2hr 10min, runs every 30min.</div></div></div>
@@ -958,14 +978,14 @@
         </div>
         <div class="day-body">
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Train+Bus → Malga Zannes <span class="badge badge-warn">6:32am</span></div><div class="item-detail">6:32–8:26am train to Brixen then bus 330 → Malga Zannes (1hr 50min total).</div></div></div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Zanser Alm–Schluterhütte–Kaserill Alm · 5.8mi · 2k vert</div><div class="item-detail">Dramatic Dolomites hike through spiky peaks. May need spikes at higher elevations.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Zanser Alm–Schluterhütte–Kaserill Alm · 5.8mi · 2k vert <a href="https://www.alltrails.com/trail/italy/south-tyrol/zanser-alm-schluterhutte-kaserill-alm" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">Dramatic Dolomites hike through spiky peaks. May need spikes at higher elevations.</div></div></div>
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚌</div><div class="item-content"><div class="item-label">Bus → Ortisei</div><div class="item-detail">12:35–2:25pm or 1:35–3:26pm (bus 330-351 or 330-170-350) · 1hr 50min.</div></div></div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Ortisei–St. James Meadow Hike · 3.4mi RT</div><div class="item-detail">3:30–5:30pm. No lift required. Beautiful meadow walk from Ortisei.</div></div></div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-tip">💡</div><div class="item-content"><div class="item-label">Alt: Mount Piz Hike <span class="badge badge-tip">If time</span></div><div class="item-detail">If arriving by 2:30 — explore some higher alpine terrain from Ortisei.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Ortisei–St. James Meadow Hike · 3.4mi RT <a href="https://www.alltrails.com/trail/italy/south-tyrol/ortisei-san-giacomo" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">3:30–5:30pm. No lift required. Beautiful meadow walk from Ortisei.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-tip">💡</div><div class="item-content"><div class="item-label">Alt: Mount Piz Hike <span class="badge badge-tip">If time</span> <a href="https://www.alltrails.com/trail/italy/south-tyrol/seceda-pic-urtijei" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">If arriving by 2:30 — explore some higher alpine terrain from Ortisei.</div></div></div>
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚌</div><div class="item-content"><div class="item-label">Bus 350: Ortisei → Bolzano</div><div class="item-detail">5:59–6:57pm or 6:59–7:57pm (1hr). Can reverse entire day: take 7:26am bus to Ortisei first.</div></div></div>
           <div class="section-label">Backup Plans</div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-tip">💡</div><div class="item-content"><div class="item-label">Backup: Castelrotto + Marinzen Cable Car <span class="badge badge-tip">Alt.</span></div><div class="item-detail">Bus 170 Bolzano → Castelrotto (50min, every 30min). Cable car €20 RT. 4.3mi hike or cable car down.</div></div></div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Backup: Guncina Promenade · 1.7mi RT</div><div class="item-detail">Easy hike in Bolzano town if weather is bad.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-tip">💡</div><div class="item-content"><div class="item-label">Backup: Castelrotto + Marinzen Cable Car <span class="badge badge-tip">Alt.</span> <a href="https://www.alltrails.com/trail/italy/south-tyrol/castelrotto-alpe-di-marinzen" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">Bus 170 Bolzano → Castelrotto (50min, every 30min). Cable car €20 RT. 4.3mi hike or cable car down.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Backup: Guncina Promenade · 1.7mi RT <a href="https://www.alltrails.com/trail/italy/south-tyrol/giro-del-guncina" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">Easy hike in Bolzano town if weather is bad.</div></div></div>
           <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Backup: Oswald Promenade</div><div class="item-detail">Another easy walk in Bolzano town alongside Guncina.</div></div></div>
           <div class="cat-empty"></div>
         </div>
@@ -983,7 +1003,7 @@
         </div>
         <div class="day-body">
           <div class="item" data-cat="activity"><div class="item-icon icon-ticket">🚡</div><div class="item-content"><div class="item-label">Ritten Cable Car + Narrow-Gauge Train</div><div class="item-detail">Sit right side going up. Runs every 30min. Access to the Renon plateau above Bolzano.</div></div></div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Earth Pyramids Hike — 2.9 miles RT</div><div class="item-detail">Unique geological spires — sandstone columns with boulders balanced on top. Surreal and uncrowded.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Earth Pyramids Hike — 2.9 miles RT <a href="https://www.alltrails.com/trail/italy/south-tyrol/piramidi-di-terra-del-renon-erdpyramiden-am-ritten" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">Unique geological spires — sandstone columns with boulders balanced on top. Surreal and uncrowded.</div></div></div>
           <div class="item" data-cat="food"><div class="item-icon icon-food">☕</div><div class="item-content"><div class="item-label">Brunch: Café Lintner</div><div class="item-detail">Highly regarded café on the Ritten plateau. Worth timing the hike around.</div></div></div>
           <div class="section-label">Afternoon Transfer</div>
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Bolzano → Como S. Giovanni <span class="badge badge-booked">Seats Reserved</span></div><div class="item-detail">2:25pm–6:49pm (4hr 25min, 1 transfer). Seats reserved on 2nd train. Pack snacks.</div></div></div>
@@ -1029,9 +1049,9 @@
         </div>
         <div class="day-body">
           <div class="item" data-cat="activity"><div class="item-icon icon-ticket">🚞</div><div class="item-content"><div class="item-label">Gornergrat Railway <span class="badge badge-tip">Go at 7am</span></div><div class="item-detail">7am or 8am, 30–40min up. Best Matterhorn views of the trip. Clouds build by midday.</div></div></div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Hike Down → Riffelberg or Riffelalp</div><div class="item-detail">Snow levels dictate how far you go. Train back toward Zermatt, then gondola up to Furi.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Hike Down → Riffelberg or Riffelalp <a href="https://www.alltrails.com/trail/switzerland/valais/gornergrat-riffelberg-riffelalp-furi-zermatt" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">Snow levels dictate how far you go. Train back toward Zermatt, then gondola up to Furi.</div></div></div>
           <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Lunch in Furi</div><div class="item-detail">Small mountain hamlet. Cozy terrace, Swiss classics, Matterhorn views.</div></div></div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Suspension Bridge + Furi → Zermatt — 2 miles</div><div class="item-detail">Scenic downhill finish back into the village.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Suspension Bridge + Furi → Zermatt — 2 miles <a href="https://www.alltrails.com/trail/switzerland/valais/hangebruckenweg-furi" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">Scenic downhill finish back into the village.</div></div></div>
           <div class="section-label">Afternoon Transfer</div>
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Zermatt → Interlaken West</div><div class="item-detail">3:37pm / 4:06pm / 4:37pm (every 30min). ~2hr 15min, 2 transfers.</div></div></div>
           <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Heart of Interlaken Apartment <span class="badge badge-booked">Booked</span></div><div class="item-detail">Nights 7–8 · $931 · 1 king + 2 bunks, 2 baths. Washing machine. Central location.</div></div></div>
@@ -1052,7 +1072,7 @@
         <div class="day-body">
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Interlaken → Kandersteg <span class="badge badge-warn">6:29am start</span></div><div class="item-detail">1hr, 1 transfer. 15min walk to cable car. Very early — set two alarms.</div></div></div>
           <div class="item" data-cat="activity"><div class="item-icon icon-ticket">🚡</div><div class="item-content"><div class="item-label">Oeschinensee Cable Car <span class="badge badge-booked">Booked</span></div><div class="item-detail">144 CHF total (4 people). Ascend 8:30–10am. Emerald glacial lake ringed by waterfalls.</div></div></div>
-          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Oeschinen Lake Trails — C / D / G</div><div class="item-detail">C = easy lake loop; D = panorama; G = mountain. Check snow conditions that week.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Oeschinen Lake Trails — C / D / G <a href="https://www.alltrails.com/trail/switzerland/bern/oeschinensee-rundweg" target="_blank" rel="noopener" class="alltrails-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>AllTrails</a></div><div class="item-detail">C = easy lake loop; D = panorama; G = mountain. Check snow conditions that week.</div></div></div>
           <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Mountain Restaurant at Oeschinen</div><div class="item-detail">Lakeside lunch at the top before heading down. Great rösti and views.</div></div></div>
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Kandersteg → Interlaken</div><div class="item-detail">11:14am or 12:14pm (1hr, every hour). Back for afternoon at Mürren.</div></div></div>
           <div class="section-label">Afternoon — Mürren &amp; Schilthorn</div>
@@ -1544,40 +1564,40 @@
   { day:2, date:'May 10', stop:'innsbruck', title:'Day Trip: Garmisch', items:[
     { cat:'travel', icon:'🚆', label:'Train to Garmisch', detail:'6:38am–7:57am Innsbruck→Garmisch-Partenkirchen (~1hr 20min)' },
     { cat:'travel', icon:'🚌', label:'Bus 314 → Eibsee', detail:'8:13–8:45am or 9:13–9:45am (45min) · Day ticket €7 or €2.10 one-way' },
-    { cat:'activity', icon:'🥾', label:'Lake Eibsee Loop · 4.5mi', detail:'Stunning lake loop with Zugspitze as backdrop. Start on right side.' },
+    { cat:'activity', icon:'🥾', label:'Lake Eibsee Loop · 4.5mi', detail:'Stunning lake loop with Zugspitze as backdrop. Start on right side.', url:'https://www.alltrails.com/trail/germany/bavaria/eibsee-rundweg--3' },
     { cat:'activity', icon:'🚡', label:'Zugspitze Cable Car · €69pp', detail:'Tallest mountain in Germany! Cogwheel train CLOSED from May 4 — cable car only. Tickets may open 30 days ahead.', badge:'warn' },
     { cat:'food',   icon:'🍽️', label:'Lunch: Panorama Lounge 2962', detail:'Mountain restaurant at 2962m summit' },
     { cat:'travel', icon:'🚌', label:'Bus Eibsee → Garmisch', detail:'1:09–1:41pm or 2:09–2:41pm (45min) · Runs every hour' },
-    { cat:'activity', icon:'🥾', label:'Partnachklamm Gorge · €10', detail:'Dramatic gorge hike · 30min walk one way' },
-    { cat:'activity', icon:'🚡', label:'Alt: Mount Wank Cable Car · €30', detail:'1.4mi loop (Wank–Ameisberg–Eckenberg) if plans change', badge:'tip' },
+    { cat:'activity', icon:'🥾', label:'Partnachklamm Gorge · €10', detail:'Dramatic gorge hike · 30min walk one way', url:'https://www.alltrails.com/trail/germany/bavaria/partnachklamm-weg' },
+    { cat:'activity', icon:'🚡', label:'Alt: Mount Wank Cable Car · €30', detail:'1.4mi loop (Wank–Ameisberg–Eckenberg) if plans change', badge:'tip', url:'https://www.alltrails.com/trail/germany/bavaria/wank-rundweg' },
     { cat:'food',   icon:'🍽️', label:'Dinner in Garmisch', detail:'~1hr for dinner before return train' },
     { cat:'travel', icon:'🚆', label:'Return to Innsbruck', detail:'6:02pm–7:23pm (RB6) Garmisch→Innsbruck (~1hr 20min)' },
   ]},
   { day:3, date:'May 11', stop:'bolzano', title:'Nordkette → Bolzano', items:[
     { cat:'activity', icon:'🚡', label:'Nordkette 3 Cable Cars', detail:'Top of Innsbruck · Time slot BOOKED ascend 8–9:30am · $208 total for 4', badge:'booked' },
     { cat:'food',   icon:'☕', label:'Breakfast at Cloud 9 / Seegrube', detail:'Coffee stop at the Seegrube station' },
-    { cat:'activity', icon:'🥾', label:'Goethe Trail · 3.7mi · 800ft vert', detail:'⭐ Top choice · Popular trail, great views at top · Weather dependent — may need spikes', badge:'tip' },
-    { cat:'activity', icon:'🥾', label:'Alt: Hafelekar–Seegrube Downhill · 2.4mi', detail:'Chill safe option — hike downhill from Hafelekar to Seegrube if weather allows', badge:'tip' },
-    { cat:'activity', icon:'🥾', label:'Alt: Hafelekarspitze Loop · 3mi · 1.5k vert', detail:'Start at Seegrube, hike round-trip to summit · Good if Goethe Trail too snowy' },
-    { cat:'activity', icon:'🥾', label:'Alt: Seegrube–Langer Sattel · 3mi OB · 1.3k vert', detail:'Challenging sections but great views the whole hike' },
+    { cat:'activity', icon:'🥾', label:'Goethe Trail · 3.7mi · 800ft vert', detail:'⭐ Top choice · Popular trail, great views at top · Weather dependent — may need spikes', badge:'tip', url:'https://www.alltrails.com/trail/austria/tyrol/goetheweg-karstube-zur-pfeishutte' },
+    { cat:'activity', icon:'🥾', label:'Alt: Hafelekar–Seegrube Downhill · 2.4mi', detail:'Chill safe option — hike downhill from Hafelekar to Seegrube if weather allows', badge:'tip', url:'https://www.alltrails.com/trail/austria/tyrol/hafelekar-hafelekarspitze-und-seegrube' },
+    { cat:'activity', icon:'🥾', label:'Alt: Hafelekarspitze Loop · 3mi · 1.5k vert', detail:'Start at Seegrube, hike round-trip to summit · Good if Goethe Trail too snowy', url:'https://www.alltrails.com/trail/austria/tyrol/hafelekarspitze-und-gleirschjochl-ab-seegrube' },
+    { cat:'activity', icon:'🥾', label:'Alt: Seegrube–Langer Sattel · 3mi OB · 1.3k vert', detail:'Challenging sections but great views the whole hike', url:'https://www.alltrails.com/trail/austria/tyrol/seegrube-langer-sattel' },
     { cat:'food',   icon:'🍽️', label:'Lunch by the Inn River', detail:'Walk by the water in Innsbruck Old Town' },
     { cat:'travel', icon:'🚆', label:'Train to Bolzano', detail:'Skip Eurorail — buy S3 ticket (€11) to Brenner + use Bolzano Card to Bolzano · 2hr 10min · Runs every 30min', badge:'tip' },
     { cat:'travel', icon:'🏨', label:'Hotel: Stiegl Scala, Bolzano', detail:'2 rooms · $791 total · Free cancel by 5/8 · Free Bolzano Card for bus/cable car · Free luggage storage', badge:'booked' },
   ]},
   { day:4, date:'May 12', stop:'bolzano', title:'Dolomites: Val Gardena', items:[
     { cat:'travel', icon:'🚆', label:'Train+Bus → Malga Zannes', detail:'6:32–8:26am train to Brixen then bus 330 → Malga Zannes (1hr 50min total)' },
-    { cat:'activity', icon:'🥾', label:'Zanser Alm–Schluterhutte–Kaserill Alm · 5.8mi · 2k vert', detail:'Dramatic Dolomites hike — may need spikes at higher elevations' },
+    { cat:'activity', icon:'🥾', label:'Zanser Alm–Schluterhutte–Kaserill Alm · 5.8mi · 2k vert', detail:'Dramatic Dolomites hike — may need spikes at higher elevations', url:'https://www.alltrails.com/trail/italy/south-tyrol/zanser-alm-schluterhutte-kaserill-alm' },
     { cat:'travel', icon:'🚌', label:'Bus to Ortisei', detail:'12:35–2:25pm or 1:35–3:26pm (bus 330-351) · 1hr 50min' },
-    { cat:'activity', icon:'🥾', label:'Ortisei–St. James Meadow Hike · 3.4mi RT', detail:'No lift required · Beautiful meadow walk' },
-    { cat:'activity', icon:'🥾', label:'Alt: Mount Piz Hike', detail:'If arriving by 2:30 — check out higher alpine terrain from Ortisei', badge:'tip' },
+    { cat:'activity', icon:'🥾', label:'Ortisei–St. James Meadow Hike · 3.4mi RT', detail:'No lift required · Beautiful meadow walk', url:'https://www.alltrails.com/trail/italy/south-tyrol/ortisei-san-giacomo' },
+    { cat:'activity', icon:'🥾', label:'Alt: Mount Piz Hike', detail:'If arriving by 2:30 — check out higher alpine terrain from Ortisei', badge:'tip', url:'https://www.alltrails.com/trail/italy/south-tyrol/seceda-pic-urtijei' },
     { cat:'travel', icon:'🚌', label:'Bus 350 → Bolzano', detail:'5:59–6:57pm or 6:59–7:57pm (1hr) · Can reverse: take 7:26am bus to Ortisei first' },
-    { cat:'activity', icon:'🚡', label:'Backup: Castelrotto + Marinzen Cable Car · €20 RT', detail:'Bus 170 Bolzano→Castelrotto (50min, every 30min) · 4.3mi hike or cable car down', badge:'tip' },
-    { cat:'activity', icon:'🥾', label:'Backup: Guncina Promenade · 1.7mi RT', detail:'Easy hike in Bolzano town if weather is bad' },
+    { cat:'activity', icon:'🚡', label:'Backup: Castelrotto + Marinzen Cable Car · €20 RT', detail:'Bus 170 Bolzano→Castelrotto (50min, every 30min) · 4.3mi hike or cable car down', badge:'tip', url:'https://www.alltrails.com/trail/italy/south-tyrol/castelrotto-alpe-di-marinzen' },
+    { cat:'activity', icon:'🥾', label:'Backup: Guncina Promenade · 1.7mi RT', detail:'Easy hike in Bolzano town if weather is bad', url:'https://www.alltrails.com/trail/italy/south-tyrol/giro-del-guncina' },
     { cat:'activity', icon:'🥾', label:'Backup: Oswald Promenade', detail:'Another easy walk in Bolzano town alongside Guncina' },
   ]},
   { day:5, date:'May 13', stop:'como', title:'Ritten Plateau → Lake Como', items:[
     { cat:'activity', icon:'🚡', label:'Ritten Cable Car + Train', detail:'Sit on right side for best views going up · Runs every 30min' },
-    { cat:'activity', icon:'🥾', label:'Earth Pyramids Hike · 2.9mi RT', detail:'Unique geological formations on the Renon plateau' },
+    { cat:'activity', icon:'🥾', label:'Earth Pyramids Hike · 2.9mi RT', detail:'Unique geological formations on the Renon plateau', url:'https://www.alltrails.com/trail/italy/south-tyrol/piramidi-di-terra-del-renon-erdpyramiden-am-ritten' },
     { cat:'food',   icon:'☕', label:'Brunch: Café Lintner', detail:'Sit on left side for best views on return train' },
     { cat:'travel', icon:'🚆', label:'Train to Lake Como', detail:'2:25pm–6:49pm Bolzano→Como S. Giovanni (4hr 25min, 1 transfer) · Seats reserved for 2nd train', badge:'booked' },
     { cat:'activity', icon:'🌅', label:'Sunset over Lake Como · 8:49pm', detail:'Evening stroll along the lakefront' },
@@ -1595,17 +1615,17 @@
   ]},
   { day:7, date:'May 15', stop:'zermatt', title:'Gornergrat + Matterhorn', items:[
     { cat:'activity', icon:'🚂', label:'Gornergrat Railway · 7am', detail:'Zermatt→Gornergrat (30–40min) · €141 RT/pp · Sunrise 5:58am' },
-    { cat:'activity', icon:'🥾', label:'Hike Down → Riffelberg / Riffelalp', detail:'Depending on snow levels · Or hike Riffelalp→Furi 2.5mi · Take train down + gondola to Furi' },
+    { cat:'activity', icon:'🥾', label:'Hike Down → Riffelberg / Riffelalp', detail:'Depending on snow levels · Or hike Riffelalp→Furi 2.5mi · Take train down + gondola to Furi', url:'https://www.alltrails.com/trail/switzerland/valais/gornergrat-riffelberg-riffelalp-furi-zermatt' },
     { cat:'activity', icon:'⛷️', label:'Alt: Ski the Matterhorn!', detail:'Nik\'s proposal: Ski pass €99 + rentals €40 = €139pp (cheaper than train!) · 9am–12pm skiing with Matterhorn views', badge:'tip' },
     { cat:'food',   icon:'🍽️', label:'Lunch in Furi', detail:'12:15–1:15pm at Furi station' },
-    { cat:'activity', icon:'🥾', label:'Suspension Bridge + Furi → Zermatt', detail:'1:30–2:30pm suspension bridge hike · Then 2mi hike Furi→Zermatt · Back by 3:00–3:30pm' },
+    { cat:'activity', icon:'🥾', label:'Suspension Bridge + Furi → Zermatt', detail:'1:30–2:30pm suspension bridge hike · Then 2mi hike Furi→Zermatt · Back by 3:00–3:30pm', url:'https://www.alltrails.com/trail/switzerland/valais/hangebruckenweg-furi' },
     { cat:'travel', icon:'🚆', label:'Train → Interlaken', detail:'3:37–5:57pm or 4:06–7:21pm or 4:37–7:53pm · ~2hr 15min, 2 transfers · Runs every 30min' },
     { cat:'travel', icon:'🏨', label:'Hotel: Heart of Interlaken', detail:'1 king + 2 bunks · 2 bath · $931 · Free cancel by 4/16 · Washing machine · Blumenstrasse 2', badge:'booked' },
   ]},
   { day:8, date:'May 16', stop:'interlaken', title:'Oeschinen Lake + Schilthorn', items:[
     { cat:'travel', icon:'🚆', label:'Train → Kandersteg · 6:29am', detail:'6:29–7:40am or 7:33–8:40am (1hr, 1 transfer) · 15min walk to cable car' },
     { cat:'activity', icon:'🚡', label:'Oeschinensee Cable Car', detail:'Time slot BOOKED ascend 8:30–10am · 144 CHF total for 4', badge:'booked' },
-    { cat:'activity', icon:'🥾', label:'Oeschinen Lake Trails', detail:'C trail: walk to lake · D trail: panorama path · G trail: mountain hiking · Check openings ahead of time' },
+    { cat:'activity', icon:'🥾', label:'Oeschinen Lake Trails', detail:'C trail: walk to lake · D trail: panorama path · G trail: mountain hiking · Check openings ahead of time', url:'https://www.alltrails.com/trail/switzerland/bern/oeschinensee-rundweg' },
     { cat:'food',   icon:'🍽️', label:'Mountain Restaurant Lunch', detail:'Lunch at the lake before heading back' },
     { cat:'travel', icon:'🚆', label:'Train → Interlaken', detail:'11:14–12:26pm or 12:14–1:28pm · Leaves every hour' },
     { cat:'travel', icon:'🚆', label:'Interlaken → Lauterbrunnen → Mürren', detail:'22min train + Grütschalp cable car + 11min train · Covered with Eurorail pass' },
@@ -1688,11 +1708,12 @@
   function renderDaySummary(card, dayData) {
     card.style.display = 'block';
     const progressPct = Math.round(((dayData.dayNum - 1) / (TOTAL_DAYS - 1)) * 100);
+    const atSvg = '<svg viewBox="0 0 24 24" fill="currentColor" style="width:10px;height:10px;flex-shrink:0"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zm-2 16H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7h-7z"/></svg>';
     const itemsHtml = dayData.items.map(item => `
       <div class="today-item" data-cat="${item.cat}">
         <div class="today-item-icon" style="background:${item.bg}">${item.icon}</div>
         <div>
-          <div class="today-item-label">${item.label}</div>
+          <div class="today-item-label">${item.label}${item.url ? ` <a href="${item.url}" target="_blank" rel="noopener" class="alltrails-link">${atSvg}AllTrails</a>` : ''}</div>
           ${item.detail ? `<div class="today-item-detail">${item.detail}</div>` : ''}
         </div>
       </div>`).join('');
