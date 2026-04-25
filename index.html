@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alps Trip · May 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --snow: #f5f3ee;
+    --peak: #1a252f;
+    --pine: #2d4a3e;
+    --gold: #c9a84c;
+    --mist: #a8b8c4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--snow);
+    color: var(--peak);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, var(--peak) 0%, #1e3a4a 40%, var(--pine) 100%);
+    padding: 56px 40px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='800' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,300 120,80 240,200 360,40 480,160 600,20 720,120 800,60 800,300' fill='%23ffffff08'/%3E%3Cpolygon points='0,300 80,140 200,240 320,80 440,200 560,50 680,150 800,90 800,300' fill='%23ffffff05'/%3E%3C/svg%3E") bottom/cover no-repeat;
+  }
+  .hero-inner {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    color: #fff;
+    line-height: 1.1;
+  }
+  .hero-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--mist);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+  .hero-stats { display: flex; gap: 32px; flex-wrap: wrap; }
+  .stat { text-align: right; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #fff; line-height: 1; }
+  .stat-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--mist); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
+
+  /* ── NAV WRAPPER ── */
+  .nav-wrapper { background: var(--peak); }
+
+  /* ── LOCATION TABS ── */
+  .stops-bar {
+    padding: 0 40px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .stops-bar::-webkit-scrollbar { display: none; }
+  .stops-track { max-width: 1100px; margin: 0 auto; display: flex; }
+  .stop-tab {
+    padding: 14px 22px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--mist);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .stop-tab:hover { color: #fff; }
+  .stop-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .stop-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  /* ── CATEGORY TOGGLE BAR ── */
+  .cat-bar { padding: 0 40px; overflow-x: auto; scrollbar-width: none; }
+  .cat-bar::-webkit-scrollbar { display: none; }
+  .cat-track {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 6px;
+    padding: 10px 0;
+  }
+  .cat-btn {
+    padding: 7px 18px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    cursor: pointer;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    white-space: nowrap;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+  }
+  .cat-btn:hover { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.25); }
+
+  .cat-btn.active-overview { background: rgba(201,168,76,0.2);  color: var(--gold);  border-color: rgba(201,168,76,0.5); }
+  .cat-btn.active-activity { background: rgba(46,92,138,0.4);   color: #8dc4f0;      border-color: #2e5c8a; }
+  .cat-btn.active-travel   { background: rgba(122,74,26,0.4);   color: #f0c07a;      border-color: #a06030; }
+  .cat-btn.active-food     { background: rgba(140,60,60,0.4);   color: #f0a8a8;      border-color: #904040; }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 40px 60px;
+    display: grid;
+    grid-template-columns: 1fr 310px;
+    gap: 28px;
+  }
+  @media (max-width: 820px) {
+    .main { grid-template-columns: 1fr; padding: 18px 16px 40px; }
+    .hero { padding: 34px 16px 30px; }
+    .stops-bar, .cat-bar { padding: 0 16px; }
+  }
+
+  /* ── VIEW HEADER BANNER ── */
+  .view-header {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 9px 14px;
+    border-radius: 9px;
+    font-size: 0.77rem;
+    font-weight: 500;
+  }
+  .view-header.showing { display: flex; }
+  .vh-activity { background: #deedf8; color: #1a3a5c; border: 1px solid #9ec4e4; }
+  .vh-travel   { background: #fdf0e0; color: #5a3000; border: 1px solid #e8b870; }
+  .vh-food     { background: #fde8e8; color: #5a1a1a; border: 1px solid #e49090; }
+
+  /* ── DAY CARDS ── */
+  .days-panel { display: flex; flex-direction: column; gap: 14px; }
+  .day-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e2ddd6;
+    transition: box-shadow 0.2s;
+    display: none;
+  }
+  .day-card.visible { display: block; animation: fadeUp 0.28s ease forwards; }
+  .day-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .day-header {
+    padding: 16px 20px 13px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid #f0ece6;
+    cursor: pointer;
+    user-select: none;
+  }
+  .day-num { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 1.5px; color: var(--mist); text-transform: uppercase; margin-bottom: 3px; }
+  .day-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--peak); }
+  .day-date { font-family: 'DM Mono', monospace; font-size: 0.64rem; color: var(--mist); margin-top: 2px; }
+  .day-toggle { font-size: 1rem; color: var(--mist); transition: transform 0.2s; flex-shrink: 0; margin-top: 2px; }
+  .day-card.open .day-toggle { transform: rotate(180deg); }
+
+  .day-body {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.38s ease, padding 0.2s;
+  }
+  .day-card.open .day-body { max-height: 1400px; padding: 14px 20px 18px; }
+
+  /* ── ITEMS ── */
+  .item {
+    display: flex;
+    gap: 11px;
+    margin-bottom: 11px;
+    align-items: flex-start;
+    transition: opacity 0.15s;
+  }
+  .item:last-child { margin-bottom: 0; }
+  .item.hidden { display: none; }
+
+  .item-icon {
+    width: 28px; height: 28px;
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+    position: relative;
+  }
+  /* Category left-accent bar on icon */
+  .item[data-cat="activity"] .item-icon::before {
+    content: ''; position: absolute; left: 0; top: 4px; bottom: 4px;
+    width: 2px; border-radius: 2px; background: #2e5c8a;
+  }
+  .item[data-cat="travel"] .item-icon::before {
+    content: ''; position: absolute; left: 0; top: 4px; bottom: 4px;
+    width: 2px; border-radius: 2px; background: #b07030;
+  }
+  .item[data-cat="food"] .item-icon::before {
+    content: ''; position: absolute; left: 0; top: 4px; bottom: 4px;
+    width: 2px; border-radius: 2px; background: #b04040;
+  }
+
+  .icon-travel  { background: #e8f0f7; }
+  .icon-hike    { background: #e8f3ec; }
+  .icon-food    { background: #fdf2e4; }
+  .icon-ticket  { background: #fdeaea; }
+  .icon-hotel   { background: #f0edf8; }
+  .icon-tip     { background: #fff8e0; }
+  .icon-view    { background: #e4f0fb; }
+
+  .item-content { flex: 1; min-width: 0; }
+  .item-label { font-size: 0.82rem; font-weight: 500; color: var(--peak); line-height: 1.35; }
+  .item-detail { font-size: 0.74rem; color: #7a8695; margin-top: 2px; line-height: 1.4; }
+
+  .badge {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.4px;
+    font-weight: 500;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+  .badge-booked { background: #e6f4ea; color: #2d7a3e; }
+  .badge-warn   { background: #fff3cd; color: #856404; }
+  .badge-cost   { background: #f0edf8; color: #5a4090; }
+  .badge-tip    { background: #fff8e0; color: #8a6800; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mist);
+    padding: 5px 0 7px;
+    border-top: 1px solid #f0ece6;
+    margin-top: 6px;
+  }
+  .section-label.hidden { display: none; }
+
+  /* Empty state per card in category mode */
+  .cat-empty {
+    display: none;
+    padding: 12px 0 4px;
+    font-size: 0.76rem;
+    color: #b0b8c4;
+    font-style: italic;
+  }
+  .cat-empty.showing { display: block; }
+
+  /* ── SIDEBAR ── */
+  .sidebar { display: flex; flex-direction: column; gap: 18px; }
+  .side-card { background: #fff; border-radius: 12px; border: 1px solid #e2ddd6; overflow: hidden; }
+  .side-card-head {
+    padding: 13px 16px 9px;
+    border-bottom: 1px solid #f0ece6;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--peak);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .side-card-body { padding: 13px 16px; }
+
+  .alert {
+    padding: 9px 12px;
+    border-radius: 8px;
+    margin-bottom: 9px;
+    font-size: 0.76rem;
+    line-height: 1.45;
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .alert:last-child { margin-bottom: 0; }
+  .alert-warn { background: #fffbeb; border: 1px solid #f0d060; color: #7a5c00; }
+  .alert-good { background: #edfaf1; border: 1px solid #88d4a4; color: #1a5c30; }
+  .alert-info { background: #eef4fb; border: 1px solid #8ab4d8; color: #1a3a5c; }
+  .alert-red  { background: #fef2f2; border: 1px solid #f4aaaa; color: #7a1a1a; }
+  .alert-icon { font-size: 0.9rem; flex-shrink: 0; margin-top: 1px; }
+  .alert-text strong { display: block; margin-bottom: 1px; font-weight: 600; }
+
+  .hotel-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #f0ece6; }
+  .hotel-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .hotel-icon { font-size: 1.3rem; }
+  .hotel-name { font-size: 0.8rem; font-weight: 500; color: var(--peak); }
+  .hotel-meta { font-size: 0.7rem; color: #7a8695; margin-top: 2px; }
+  .hotel-price { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--pine); font-weight: 500; margin-top: 3px; }
+
+  .budget-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid #f5f2ee; font-size: 0.76rem; }
+  .budget-row:last-child { border-bottom: none; }
+  .budget-label { color: #6a7685; }
+  .budget-amt { font-family: 'DM Mono', monospace; }
+
+  .tip-row { padding: 7px 0; border-bottom: 1px solid #f5f2ee; font-size: 0.76rem; color: var(--peak); line-height: 1.45; display: flex; gap: 8px; }
+  .tip-row:last-child { border-bottom: none; }
+
+  /* ── COUNTDOWN CARD ── */
+  #todayCard { animation: fadeUp 0.4s ease forwards; }
+
+  .countdown-card {
+    background: linear-gradient(135deg, var(--peak) 0%, #1e3a4a 55%, #1a3530 100%);
+    border-radius: 14px;
+    padding: 28px 28px 24px;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+  }
+  .countdown-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='600' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,200 100,60 200,140 300,30 400,110 500,10 600,70 600,200' fill='%23ffffff06'/%3E%3C/svg%3E") bottom/cover no-repeat;
+    pointer-events: none;
+  }
+
+  .cd-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cd-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+  }
+
+  .cd-units {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .cd-unit {
+    text-align: center;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 10px 14px 8px;
+    min-width: 58px;
+  }
+  .cd-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    line-height: 1;
+    color: #fff;
+    letter-spacing: -1px;
+  }
+  .cd-lbl {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-top: 4px;
+  }
+  .cd-sep {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: rgba(255,255,255,0.2);
+    align-self: center;
+    padding-bottom: 8px;
+  }
+
+  .cd-flight-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.85);
+  }
+  .cd-flight-row .cd-airport {
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+  }
+  .cd-flight-row .cd-arrow {
+    flex: 1;
+    text-align: center;
+    color: var(--gold);
+    font-size: 1rem;
+  }
+  .cd-flight-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--mist);
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── TODAY SUMMARY CARD ── */
+  .today-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 2px solid var(--gold);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.15);
+  }
+
+  .today-header {
+    background: linear-gradient(135deg, var(--peak) 0%, #1e3a4a 100%);
+    padding: 16px 20px 14px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .today-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .today-eyebrow::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 6px var(--gold);
+    animation: pulse-orb 2s infinite;
+  }
+
+  .today-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .today-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--mist);
+    margin-top: 3px;
+    white-space: nowrap;
+  }
+
+  .today-progress-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .today-day-badge {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .today-day-of {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--mist);
+    letter-spacing: 1px;
+  }
+
+  .today-body { padding: 14px 20px 16px; }
+
+  .today-item {
+    display: flex;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid #f0ece6;
+    align-items: flex-start;
+  }
+  .today-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .today-item.hidden { display: none; }
+
+  .today-item-icon {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .today-item-label { font-size: 0.8rem; font-weight: 500; color: var(--peak); line-height: 1.3; }
+  .today-item-detail { font-size: 0.72rem; color: #7a8695; margin-top: 1px; }
+
+  .today-footer {
+    padding: 10px 20px;
+    background: #faf9f6;
+    border-top: 1px solid #f0ece6;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    color: var(--mist);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .today-progress-bar {
+    height: 3px;
+    background: #e8e4de;
+    border-radius: 3px;
+    overflow: hidden;
+    width: 80px;
+  }
+  .today-progress-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+  }
+
+  /* ── WEATHER CHIPS ON ACTIVITY ITEMS ── */
+  .item[data-wx] { cursor: pointer; }
+  .item[data-wx]:hover { background: #f8f6f2; border-radius: 8px; }
+
+  .wx-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 5px;
+    padding: 3px 8px 3px 6px;
+    border-radius: 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.3px;
+    border: 1px solid rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    user-select: none;
+  }
+  .wx-chip:hover { opacity: 0.8; transform: scale(0.98); }
+  .wx-chip-icon { font-size: 0.75rem; }
+  .wx-chip-temp { font-weight: 500; }
+  .wx-chip-sep  { color: rgba(0,0,0,0.25); margin: 0 1px; }
+  .wx-chip-precip { opacity: 0.8; }
+  .wx-chip-hint { font-size: 0.5rem; opacity: 0.55; margin-left: 2px; letter-spacing: 0.5px; }
+
+  /* ── WEATHER MODAL ── */
+  .wx-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 30, 40, 0.55);
+    backdrop-filter: blur(3px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.15s ease;
+  }
+  .wx-modal-overlay.open { display: flex; }
+  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+  .wx-modal {
+    background: #fff;
+    border-radius: 16px;
+    max-width: 680px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+    animation: slideUp 0.2s ease;
+  }
+  @keyframes slideUp { from { transform: translateY(16px); opacity:0; } to { transform:translateY(0); opacity:1; } }
+
+  .wx-modal-head {
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid #f0ece6;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 1;
+    border-radius: 16px 16px 0 0;
+  }
+  .wx-modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--peak);
+    line-height: 1.2;
+  }
+  .wx-modal-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--mist);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .wx-modal-close {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: 1px solid #e0dbd4;
+    background: #f8f6f2;
+    color: #6a7a8a;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s;
+    line-height: 1;
+  }
+  .wx-modal-close:hover { background: #eee; }
+
+  .wx-modal-body { padding: 18px 22px 22px; }
+
+  .wx-modal-elev-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .wx-modal-etab {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid #e0dbd4;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: #f8f6f2;
+    color: #6a7a8a;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .wx-modal-etab:hover { border-color: #b0a898; color: var(--peak); }
+  .wx-modal-etab.active { background: var(--peak); color: #fff; border-color: var(--peak); }
+  .wx-modal-etab-elev { font-size: 0.52rem; opacity: 0.7; }
+
+  .wx-modal-pane { display: none; }
+  .wx-modal-pane.active { display: block; }
+</style>
+
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-sub">Group Trip · Alps 2025</div>
+      <div class="hero-title">Europe Alpine<br><em>Adventure</em></div>
+      <div class="hero-sub" style="margin-top:12px">May 8 – 17 · IAD → ZRH</div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">9</div><div class="stat-label">Days</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">Stops</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Countries</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV WRAPPER -->
+<div class="nav-wrapper">
+  <!-- LOCATION TABS -->
+  <div class="stops-bar">
+    <div class="stops-track">
+      <div class="stop-tab active" onclick="filterStop('all', this)"><span class="stop-dot"></span>All Days</div>
+      <div class="stop-tab" onclick="filterStop('innsbruck', this)"><span class="stop-dot"></span>Innsbruck</div>
+      <div class="stop-tab" onclick="filterStop('bolzano', this)"><span class="stop-dot"></span>Bolzano</div>
+      <div class="stop-tab" onclick="filterStop('como', this)"><span class="stop-dot"></span>Lake Como</div>
+      <div class="stop-tab" onclick="filterStop('zermatt', this)"><span class="stop-dot"></span>Zermatt</div>
+      <div class="stop-tab" onclick="filterStop('interlaken', this)"><span class="stop-dot"></span>Interlaken</div>
+    </div>
+  </div>
+  <!-- CATEGORY TOGGLE -->
+  <div class="cat-bar">
+    <div class="cat-track">
+      <div class="cat-btn active-overview" id="cat-overview" onclick="filterCat('overview', this)">🗺️ Overview</div>
+      <div class="cat-btn" id="cat-activity" onclick="filterCat('activity', this)">🥾 Activities</div>
+      <div class="cat-btn" id="cat-travel"   onclick="filterCat('travel',   this)">🚂 Travel</div>
+      <div class="cat-btn" id="cat-food"     onclick="filterCat('food',     this)">🍽️ Food</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <div>
+    <div class="view-header vh-activity" id="vh-activity">🥾 Activities only — hikes, cable cars, viewpoints &amp; attractions</div>
+    <div class="view-header vh-travel"   id="vh-travel">🚂 Travel only — trains, buses, ferries &amp; accommodation</div>
+    <div class="view-header vh-food"     id="vh-food">🍽️ Food only — restaurants, cafés &amp; dining</div>
+
+    <!-- ══ TODAY / COUNTDOWN CARD ══ -->
+    <div id="todayCard" style="display:none; margin-bottom:14px;"></div>
+
+    <div class="days-panel" id="daysPanel">
+
+      <!-- ══════════════ DAY 1 ══════════════ -->
+      <div class="day-card visible" data-stop="innsbruck">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div>
+            <div class="day-num">Day 1 · Arrival</div>
+            <div class="day-title">Fly in → Innsbruck</div>
+            <div class="day-date">Saturday, May 9</div>
+          </div>
+          <div class="day-toggle">▾</div>
+        </div>
+        <div class="day-body">
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">✈️</div><div class="item-content"><div class="item-label">IAD → Munich (MUC) <span class="badge badge-warn">Departs May 8, 8:20pm</span></div><div class="item-detail">Arrives 2:25pm Munich local. Overnight flight.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Munich Airport → Innsbruck Hbf</div><div class="item-detail">Take 3:04pm train (2hrs, 1 transfer). Skip the 4:04pm — 3hrs with 2 transfers.</div></div></div>
+          <div class="section-label">Evening</div>
+          <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Stiftskeller <span class="badge badge-tip">Local Pick</span></div><div class="item-detail">Classic Tyrolean cellar restaurant. Hearty, earthy, authentic. Great for jet-lag recovery dinner.</div></div></div>
+          <div class="item" data-cat="food"><div class="item-icon icon-food">☕</div><div class="item-content"><div class="item-label">Strudel Café Kröll</div><div class="item-detail">Famous apple strudel. The move after a long travel day.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Marktbar Studios Boutique Aparthotel <span class="badge badge-booked">Booked</span></div><div class="item-detail">Nights 1–2 · 2BR · $908 total. Innsbruck Card included — covers local buses.</div></div></div>
+          <div class="cat-empty"></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ DAY 2 ══════════════ -->
+      <div class="day-card visible" data-stop="innsbruck">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div>
+            <div class="day-num">Day 2 · Day Trip</div>
+            <div class="day-title">Garmisch-Partenkirchen</div>
+            <div class="day-date">Sunday, May 10</div>
+          </div>
+          <div class="day-toggle">▾</div>
+        </div>
+        <div class="day-body">
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Innsbruck → Garmisch-Partenkirchen <span class="badge badge-warn">6:38am</span></div><div class="item-detail">Arrives 7:57am (~1hr 20min). Early start is non-negotiable.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚞</div><div class="item-content"><div class="item-label">Cogwheel Train (RB64) → Eibsee</div><div class="item-detail">8:15am or 9:15am, 45min. €2.10 one-way or €7 day pass — buy the day pass.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Lake Eibsee Loop — 4.5 miles</div><div class="item-detail">Start on the right side. Turquoise lake with Zugspitze as backdrop. Flat and easy.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-ticket">🏔️</div><div class="item-content"><div class="item-label">Zugspitze Cable Car <span class="badge badge-warn">Book Early</span></div><div class="item-detail">€69/pp. Germany's highest peak. Tickets may only open 30 days out — watch from April 10.</div></div></div>
+          <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Panorama Lounge 2962</div><div class="item-detail">Lunch at the Zugspitze summit. Altitude dining at 9,718ft.</div></div></div>
+          <div class="section-label">Afternoon</div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚞</div><div class="item-content"><div class="item-label">Cogwheel → Garmisch, Bus to Partenkirchen</div><div class="item-detail">2:15pm train → Garmisch. 3:02pm bus 321/322 → Partenkirchen (10min).</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Partnachklamm Gorge <span class="badge badge-cost">€10/pp</span></div><div class="item-detail">30min one way. Dramatic narrow gorge — a completely different experience from the lake.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Return: Garmisch → Innsbruck (RB6)</div><div class="item-detail">6:02pm–7:23pm. Back for dinner in Innsbruck.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-tip">💡</div><div class="item-content"><div class="item-label">Backup: Mount Wank Cable Car <span class="badge badge-tip">Alt.</span></div><div class="item-detail">€30, confirmed open. 1.4mi loop. If Zugspitze sells out or weather closes the peak.</div></div></div>
+          <div class="cat-empty"></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ DAY 3 ══════════════ -->
+      <div class="day-card visible" data-stop="innsbruck">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div>
+            <div class="day-num">Day 3 · Innsbruck + Transfer</div>
+            <div class="day-title">Nordkette → Bolzano</div>
+            <div class="day-date">Monday, May 11</div>
+          </div>
+          <div class="day-toggle">▾</div>
+        </div>
+        <div class="day-body">
+          <div class="item" data-cat="activity"><div class="item-icon icon-ticket">🎟️</div><div class="item-content"><div class="item-label">Nordkette 3 Cable Cars <span class="badge badge-booked">Booked</span></div><div class="item-detail">$208 total (4 tickets). Ascend 8–9:30am time slot. Top of Innsbruck, high alpine terrain.</div></div></div>
+          <div class="item" data-cat="food"><div class="item-icon icon-food">☕</div><div class="item-content"><div class="item-label">Breakfast: Cloud 9 / Seegrube</div><div class="item-detail">Coffee and pastries at mid-station with panoramic Alpine views. Start the day right.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Nordkette Hike — ~3 miles</div><div class="item-detail">Nik has routes saved. High alpine. Expect snow patches above 2000m in May.</div></div></div>
+          <div class="section-label">Afternoon Transfer</div>
+          <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Lunch by the Inn River, Innsbruck</div><div class="item-detail">Riverside lunch in Old Town before departing south.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Innsbruck → Bolzano <span class="badge badge-tip">Skip Eurorail</span></div><div class="item-detail">S3 to Brenner (€11/pp) then Bolzano Card covers the rest. ~2hr 10min, runs every 30min.</div></div></div>
+          <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Dinner in Bolzano</div><div class="item-detail">South Tyrolean cuisine — halfway between Italian and Austrian. Explore the old piazzas.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Hotel Stiegl Scala <span class="badge badge-booked">Booked</span></div><div class="item-detail">Nights 3–4 · 2 rooms · $791. Bolzano Card included. Luggage storage after checkout.</div></div></div>
+          <div class="cat-empty"></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ DAY 4 ══════════════ -->
+      <div class="day-card visible" data-stop="bolzano">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div>
+            <div class="day-num">Day 4 · Dolomites</div>
+            <div class="day-title">Val Gardena Day Trip</div>
+            <div class="day-date">Tuesday, May 12</div>
+          </div>
+          <div class="day-toggle">▾</div>
+        </div>
+        <div class="day-body">
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚌</div><div class="item-content"><div class="item-label">Bus 350: Bolzano → Ortisei <span class="badge badge-warn">7:26am</span></div><div class="item-detail">1hr. Early departure maximises cable car time. Or train + bus transfer.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-ticket">🚡</div><div class="item-content"><div class="item-label">Seiser Alm Cable Car <span class="badge badge-cost">€35 RT</span></div><div class="item-detail">8:30am–5pm. Europe's largest high-altitude meadow. Confirm May schedule 1 week before.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Monte Piz – Malga Schgaguler Loop — 4.8 miles</div><div class="item-detail">Go counter-clockwise. Sweeping Dolomite views throughout. Best hike of the Bolzano stay.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-tip">💡</div><div class="item-content"><div class="item-label">Alt if lifts closed: St. Jakob Church Hike — 3.5mi</div><div class="item-detail">No lifts needed. Always accessible. Forest and meadow trail to a beautiful hilltop church.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚌</div><div class="item-content"><div class="item-label">Bus 350: Ortisei → Bolzano</div><div class="item-detail">Leaves every hour from 2:59pm. 1hr back.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-tip">💡</div><div class="item-content"><div class="item-label">Optional Add-on: Castelrotto + Marinzen Cable Car <span class="badge badge-tip">Alt.</span></div><div class="item-detail">Bus 172 Ortisei → Castelrotto. Marinzen cable car €20 RT. Only if making great time.</div></div></div>
+          <div class="cat-empty"></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ DAY 5 ══════════════ -->
+      <div class="day-card visible" data-stop="bolzano">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div>
+            <div class="day-num">Day 5 · Bolzano + Transfer</div>
+            <div class="day-title">Ritten Plateau → Lake Como</div>
+            <div class="day-date">Wednesday, May 13</div>
+          </div>
+          <div class="day-toggle">▾</div>
+        </div>
+        <div class="day-body">
+          <div class="item" data-cat="activity"><div class="item-icon icon-ticket">🚡</div><div class="item-content"><div class="item-label">Ritten Cable Car + Narrow-Gauge Train</div><div class="item-detail">Sit right side going up. Runs every 30min. Access to the Renon plateau above Bolzano.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Earth Pyramids Hike — 2.9 miles RT</div><div class="item-detail">Unique geological spires — sandstone columns with boulders balanced on top. Surreal and uncrowded.</div></div></div>
+          <div class="item" data-cat="food"><div class="item-icon icon-food">☕</div><div class="item-content"><div class="item-label">Brunch: Café Lintner</div><div class="item-detail">Highly regarded café on the Ritten plateau. Worth timing the hike around.</div></div></div>
+          <div class="section-label">Afternoon Transfer</div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Bolzano → Como S. Giovanni <span class="badge badge-booked">Seats Reserved</span></div><div class="item-detail">2:25pm–6:49pm (4hr 25min, 1 transfer). Seats reserved on 2nd train. Pack snacks.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-view">🌅</div><div class="item-content"><div class="item-label">Sunset Over Lake Como — 8:49pm</div><div class="item-detail">Arrive in time for golden hour. Find a lakeside spot immediately on arrival.</div></div></div>
+          <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Dinner: Rino or L'ora Della Pasta</div><div class="item-detail">L'ora also works as a casual quick lunch the next morning. Both solid.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Piazza del Lago – Suite Cecilia <span class="badge badge-booked">Booked</span></div><div class="item-detail">Night 5 · 2BR house · $355. Washing machine! 7min walk from ferry, 10min from train station.</div></div></div>
+          <div class="cat-empty"></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ DAY 6 ══════════════ -->
+      <div class="day-card visible" data-stop="como">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div>
+            <div class="day-num">Day 6 · Lake Como + Transfer</div>
+            <div class="day-title">Villa Balbianello → Zermatt</div>
+            <div class="day-date">Thursday, May 14</div>
+          </div>
+          <div class="day-toggle">▾</div>
+        </div>
+        <div class="day-body">
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚌</div><div class="item-content"><div class="item-label">Bus C110: Como → Lenno</div><div class="item-detail">6:39am or 7:54am (50min). Take earlier one — need time before villa opens at 10am.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-ticket">🏛️</div><div class="item-content"><div class="item-label">Villa del Balbianello <span class="badge badge-warn">Reserve Ahead</span></div><div class="item-detail">Opens 10am · €22/pp. Timed entry — book weeks in advance. Casino Royale was filmed here.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">⛴️</div><div class="item-content"><div class="item-label">Ferry: Lenno → Como — 1.5hrs</div><div class="item-detail">12:06pm–1:40pm. Scenic lake crossing back to Como.</div></div></div>
+          <div class="section-label">Long Transfer to Zermatt</div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Como S. Giovanni → Zermatt <span class="badge badge-warn">5hrs</span></div><div class="item-detail">2:36pm–7:50pm. Long day — pack snacks. Scenery through Swiss Alps is stunning.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-view">🌅</div><div class="item-content"><div class="item-label">Matterhorn at Sunset — 8:53pm</div><div class="item-detail">First glimpse of the Matterhorn on arrival. Walk the village main street toward it.</div></div></div>
+          <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Dinner in Zermatt Village</div><div class="item-detail">Car-free village. Easy to find great fondue or raclette on the main pedestrian street.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Apartments Patricia <span class="badge badge-booked">Booked</span></div><div class="item-detail">Night 6 · 2BR + balcony · $495. Check in at Alpen Resort (partner hotel). Matterhorn views.</div></div></div>
+          <div class="cat-empty"></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ DAY 7 ══════════════ -->
+      <div class="day-card visible" data-stop="zermatt">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div>
+            <div class="day-num">Day 7 · Zermatt + Transfer</div>
+            <div class="day-title">Gornergrat + Matterhorn</div>
+            <div class="day-date">Friday, May 15 · Sunrise 5:58am</div>
+          </div>
+          <div class="day-toggle">▾</div>
+        </div>
+        <div class="day-body">
+          <div class="item" data-cat="activity"><div class="item-icon icon-ticket">🚞</div><div class="item-content"><div class="item-label">Gornergrat Railway <span class="badge badge-tip">Go at 7am</span></div><div class="item-detail">7am or 8am, 30–40min up. Best Matterhorn views of the trip. Clouds build by midday.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Hike Down → Riffelberg or Riffelalp</div><div class="item-detail">Snow levels dictate how far you go. Train back toward Zermatt, then gondola up to Furi.</div></div></div>
+          <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Lunch in Furi</div><div class="item-detail">Small mountain hamlet. Cozy terrace, Swiss classics, Matterhorn views.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Suspension Bridge + Furi → Zermatt — 2 miles</div><div class="item-detail">Scenic downhill finish back into the village.</div></div></div>
+          <div class="section-label">Afternoon Transfer</div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Zermatt → Interlaken West</div><div class="item-detail">3:37pm / 4:06pm / 4:37pm (every 30min). ~2hr 15min, 2 transfers.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Heart of Interlaken Apartment <span class="badge badge-booked">Booked</span></div><div class="item-detail">Nights 7–8 · $931 · 1 king + 2 bunks, 2 baths. Washing machine. Central location.</div></div></div>
+          <div class="cat-empty"></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ DAY 8 ══════════════ -->
+      <div class="day-card visible" data-stop="interlaken">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div>
+            <div class="day-num">Day 8 · Interlaken</div>
+            <div class="day-title">Oeschinen Lake + Mürren / Schilthorn</div>
+            <div class="day-date">Saturday, May 16</div>
+          </div>
+          <div class="day-toggle">▾</div>
+        </div>
+        <div class="day-body">
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Interlaken → Kandersteg <span class="badge badge-warn">6:29am start</span></div><div class="item-detail">1hr, 1 transfer. 15min walk to cable car. Very early — set two alarms.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-ticket">🚡</div><div class="item-content"><div class="item-label">Oeschinensee Cable Car <span class="badge badge-booked">Booked</span></div><div class="item-detail">144 CHF total (4 people). Ascend 8:30–10am. Emerald glacial lake ringed by waterfalls.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Oeschinen Lake Trails — C / D / G</div><div class="item-detail">C = easy lake loop; D = panorama; G = mountain. Check snow conditions that week.</div></div></div>
+          <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Mountain Restaurant at Oeschinen</div><div class="item-detail">Lakeside lunch at the top before heading down. Great rösti and views.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Kandersteg → Interlaken</div><div class="item-detail">11:14am or 12:14pm (1hr, every hour). Back for afternoon at Mürren.</div></div></div>
+          <div class="section-label">Afternoon — Mürren &amp; Schilthorn</div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂🚡</div><div class="item-content"><div class="item-label">Interlaken → Lauterbrunnen → Mürren</div><div class="item-detail">Train (22min) + cable car + 11min train. Fully covered by Eurorail pass.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-ticket">🏔️</div><div class="item-content"><div class="item-label">Schilthorn Cable Car <span class="badge badge-cost">€68 w/ Eurorail</span></div><div class="item-detail">World's steepest cable car. Piz Gloria 360° restaurant at top. James Bond was filmed here.</div></div></div>
+          <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Piz Gloria Revolving Restaurant</div><div class="item-detail">Full 360° panorama while you eat — Jungfrau, Eiger, Mönch. Unique dining experience.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-hike">🥾</div><div class="item-content"><div class="item-label">Thrill Walk at Birg — Glass Walk + Tightrope</div><div class="item-detail">Stop here on the way down. Last lift to Mürren at 5:50pm — don't miss it.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-tip">💡</div><div class="item-content"><div class="item-label">Allmendhubel Cable Car, Mürren <span class="badge badge-tip">Alt. to Schilthorn</span></div><div class="item-detail">€16. Scenic viewpoint and restaurant. Good if group energy is low after the Oeschinen morning.</div></div></div>
+          <div class="item" data-cat="activity"><div class="item-icon icon-ticket">⛵</div><div class="item-content"><div class="item-label">Lake Brienz Cruise <span class="badge badge-tip">Free w/ Eurorail</span></div><div class="item-detail">BLS cruise Interlaken → Brienz, 1hr 20min. 15:07 or 16:07 departure. Turquoise Alpine lake.</div></div></div>
+          <div class="cat-empty"></div>
+        </div>
+      </div>
+
+      <!-- ══════════════ DAY 9 ══════════════ -->
+      <div class="day-card visible" data-stop="interlaken">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div>
+            <div class="day-num">Day 9 · Departure</div>
+            <div class="day-title">Fly Home via Zurich</div>
+            <div class="day-date">Sunday, May 17</div>
+          </div>
+          <div class="day-toggle">▾</div>
+        </div>
+        <div class="day-body">
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Interlaken → Zurich Airport <span class="badge badge-warn">5:01am departure</span></div><div class="item-detail">2.5 hours, 2 transfers. Arrives 7:44am. Pack bags the night before. Set two alarms.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-travel">✈️</div><div class="item-content"><div class="item-label">ZRH → IAD — 10:25am departure</div><div class="item-detail">Arrives Dulles ~5:00pm. Good 2hr+ buffer at Zurich Airport.</div></div></div>
+          <div class="cat-empty"></div>
+        </div>
+      </div>
+
+    </div><!-- /days-panel -->
+  </div>
+
+  <!-- ── SIDEBAR ── -->
+  <div class="sidebar">
+    <div class="side-card">
+      <div class="side-card-head">⚡ Planner Alerts</div>
+      <div class="side-card-body">
+        <div class="alert alert-red"><div class="alert-icon">🎟️</div><div class="alert-text"><strong>Zugspitze Tickets</strong>Window opens ~April 10. Set a reminder — sells out fast on weekends.</div></div>
+        <div class="alert alert-red"><div class="alert-icon">🏛️</div><div class="alert-text"><strong>Villa Balbianello</strong>Timed entry required. Book online now — sells out weeks in advance.</div></div>
+        <div class="alert alert-warn"><div class="alert-icon">⏰</div><div class="alert-text"><strong>Day 8 Overpacked</strong>Oeschinen + Schilthorn is aggressive. Schilthorn is the showstopper if choosing one.</div></div>
+        <div class="alert alert-warn"><div class="alert-icon">🚡</div><div class="alert-text"><strong>Dolomites Lifts (May)</strong>Seiser Alm + Marinzen may still be on spring schedule. Check 1 week before.</div></div>
+        <div class="alert alert-info"><div class="alert-icon">🌤️</div><div class="alert-text"><strong>Alpine Weather</strong>Snow above 2000m in May is normal. Pack layers. Lifts close in high winds.</div></div>
+        <div class="alert alert-good"><div class="alert-icon">✅</div><div class="alert-text"><strong>Nordkette + Oeschinen Booked</strong>Both are must-dos. You're all set on the big ones.</div></div>
+      </div>
+    </div>
+
+    <div class="side-card">
+      <div class="side-card-head">🏨 Accommodations</div>
+      <div class="side-card-body">
+        <div class="hotel-row"><div class="hotel-icon">🇦🇹</div><div><div class="hotel-name">Marktbar Studios, Innsbruck</div><div class="hotel-meta">May 9–11 · Nights 1–2 · 2BR</div><div class="hotel-price">$908 total</div></div></div>
+        <div class="hotel-row"><div class="hotel-icon">🇮🇹</div><div><div class="hotel-name">Hotel Stiegl Scala, Bolzano</div><div class="hotel-meta">May 11–13 · Nights 3–4 · 2 rooms</div><div class="hotel-price">$791 total</div></div></div>
+        <div class="hotel-row"><div class="hotel-icon">🇮🇹</div><div><div class="hotel-name">Suite Cecilia, Lake Como</div><div class="hotel-meta">May 13–14 · Night 5 · 2BR house</div><div class="hotel-price">$355 total</div></div></div>
+        <div class="hotel-row"><div class="hotel-icon">🇨🇭</div><div><div class="hotel-name">Apartments Patricia, Zermatt</div><div class="hotel-meta">May 14–15 · Night 6 · Balcony</div><div class="hotel-price">$495 total</div></div></div>
+        <div class="hotel-row"><div class="hotel-icon">🇨🇭</div><div><div class="hotel-name">Heart of Interlaken Apt.</div><div class="hotel-meta">May 15–17 · Nights 7–8 · 1K+2B</div><div class="hotel-price">$931 total</div></div></div>
+      </div>
+    </div>
+
+    <div class="side-card">
+      <div class="side-card-head">💰 Known Costs</div>
+      <div class="side-card-body">
+        <div class="budget-row"><span class="budget-label">Accommodations</span><span class="budget-amt">$3,480</span></div>
+        <div class="budget-row"><span class="budget-label">Nordkette (4 tickets)</span><span class="budget-amt">$208</span></div>
+        <div class="budget-row"><span class="budget-label">Oeschinensee (4 tickets)</span><span class="budget-amt">144 CHF</span></div>
+        <div class="budget-row"><span class="budget-label">Zugspitze (per person)</span><span class="budget-amt">€69 ea.</span></div>
+        <div class="budget-row"><span class="budget-label">Seiser Alm Cable Car</span><span class="budget-amt">€35 RT/pp</span></div>
+        <div class="budget-row"><span class="budget-label">Schilthorn (w/ Eurorail)</span><span class="budget-amt">€68/pp</span></div>
+        <div class="budget-row"><span class="budget-label">Villa Balbianello</span><span class="budget-amt">€22/pp</span></div>
+        <div class="budget-row"><span class="budget-label">Partnachklamm Gorge</span><span class="budget-amt">€10/pp</span></div>
+        <div class="budget-row"><span class="budget-label">Innsbruck S3 Train</span><span class="budget-amt">€11/pp</span></div>
+      </div>
+    </div>
+
+    <div class="side-card">
+      <div class="side-card-head">✨ Top Tips</div>
+      <div class="side-card-body">
+        <div class="tip-row"><span>⚡</span><span><strong>Garmisch:</strong> Buy the €7 bus day pass — covers all Gorge + Partenkirchen transfers.</span></div>
+        <div class="tip-row"><span>🎫</span><span><strong>Bolzano Card:</strong> Covers buses + cable car — don't accidentally pay for what's already included.</span></div>
+        <div class="tip-row"><span>🌅</span><span><strong>Gornergrat:</strong> 7am train for the best Matterhorn light before clouds build.</span></div>
+        <div class="tip-row"><span>🥾</span><span><strong>Day 8:</strong> Pick Oeschinen or Schilthorn as your primary. Both back-to-back will drain the group.</span></div>
+        <div class="tip-row"><span>📱</span><span><strong>Eurorail:</strong> Activate before departure. Swiss trains need seat reservations even with a pass.</span></div>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+
+</div><!-- /main -->
+
+<!-- ══ WEATHER FORECAST SECTION ══ -->
+<div class="wx-section">
+  <div class="wx-inner">
+    <div class="wx-top-row">
+      <div>
+        <div class="wx-eyebrow">Open-Meteo · 3-Elevation Alpine Forecast · Imperial Units</div>
+        <div class="wx-title">Hike Weather <em>Forecast</em></div>
+        <div class="wx-sub">Temperature, precipitation &amp; visibility for base, mid &amp; summit elevations on each hike day</div>
+      </div>
+      <button class="wx-refresh-btn" onclick="loadAllWeather()" id="wxRefreshBtn">⏳ Loading forecasts…</button>
+    </div>
+    <div class="wx-tabs" id="wxTabs"></div>
+    <div id="wxPanels"></div>
+  </div>
+</div>
+
+<style>
+/* ══ WEATHER SECTION ══ */
+.wx-section {
+  background: linear-gradient(180deg, #eceae3 0%, var(--snow) 100%);
+  border-top: 1px solid #dedad2;
+  padding: 44px 40px 60px;
+}
+@media (max-width: 820px) { .wx-section { padding: 28px 16px 40px; } }
+.wx-inner { max-width: 1100px; margin: 0 auto; }
+
+.wx-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.wx-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 6px;
+}
+.wx-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  color: var(--peak);
+  line-height: 1.1;
+}
+.wx-sub {
+  font-size: 0.76rem;
+  color: #8a9aaa;
+  margin-top: 5px;
+}
+.wx-refresh-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  background: var(--peak);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.wx-refresh-btn:hover   { background: #2e5a7a; }
+.wx-refresh-btn:disabled { background: #a0aab4; cursor: not-allowed; }
+
+/* Tabs */
+.wx-tabs {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 2px solid #dedad2;
+  margin-bottom: 24px;
+  gap: 0;
+}
+.wx-tabs::-webkit-scrollbar { display: none; }
+.wx-tab {
+  flex-shrink: 0;
+  padding: 10px 20px 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.63rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #8a9aaa;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.18s;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+}
+.wx-tab:hover { color: var(--peak); }
+.wx-tab.active { color: var(--peak); border-bottom-color: var(--gold); }
+.wx-tab-day { font-size: 0.53rem; color: var(--mist); }
+
+/* Panels */
+.wx-panel { display: none; }
+.wx-panel.active { display: block; animation: fadeUp 0.25s ease forwards; }
+
+/* Alert banner */
+.wx-banner {
+  padding: 11px 16px;
+  border-radius: 9px;
+  font-size: 0.78rem;
+  margin-bottom: 18px;
+  border: 1px solid;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.45;
+}
+.wx-banner strong { display: block; font-weight: 600; margin-bottom: 1px; }
+.wx-banner-snow { background: #eef4fb; border-color: #8ab4d8; color: #1a3a5c; }
+.wx-banner-rain { background: #fffbeb; border-color: #f0d060; color: #7a5c00; }
+.wx-banner-wind { background: #f5f0fa; border-color: #c0a0e0; color: #4a1a7a; }
+.wx-banner-good { background: #edfaf1; border-color: #88d4a4; color: #1a5c30; }
+.wx-banner-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+/* 3-col elevation grid */
+.wx-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 680px) { .wx-grid { grid-template-columns: 1fr; } }
+
+/* Elevation card */
+.wx-card {
+  background: #fff;
+  border-radius: 13px;
+  border: 1px solid #e2ddd6;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.wx-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.07); }
+
+.wx-card-head {
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid #f0ece6;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.wx-card-icon { font-size: 1.1rem; }
+.wx-card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.63rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--peak);
+  font-weight: 500;
+}
+.wx-card-elev {
+  margin-left: auto;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--mist);
+  background: #f0ece6;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.wx-card-body { padding: 16px; }
+
+/* Main reading */
+.wx-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.wx-main-icon { font-size: 2.4rem; line-height: 1; }
+.wx-main-temp {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  line-height: 1;
+}
+.wx-main-feel {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  color: var(--mist);
+  margin-top: 4px;
+  letter-spacing: 0.3px;
+}
+.wx-main-desc {
+  font-size: 0.74rem;
+  color: #6a7a8a;
+  margin-top: 2px;
+}
+
+/* Stats grid */
+.wx-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin-bottom: 13px;
+}
+.wx-stat {
+  background: #f8f6f2;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.wx-stat-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 3px;
+}
+.wx-stat-val {
+  font-size: 0.83rem;
+  font-weight: 500;
+  color: var(--peak);
+}
+
+/* Precip bar */
+.wx-pbar-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  color: var(--mist);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.wx-pbar-track {
+  height: 5px;
+  background: #e8e4de;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 13px;
+}
+.wx-pbar-fill { height: 100%; border-radius: 3px; transition: width 0.7s ease; }
+
+/* Hourly strip */
+.wx-hourly {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+  margin: 0 -2px;
+}
+.wx-hourly::-webkit-scrollbar { display: none; }
+.wx-hr {
+  flex-shrink: 0;
+  text-align: center;
+  min-width: 34px;
+  padding: 5px 3px;
+  border-radius: 6px;
+  transition: background 0.1s;
+}
+.wx-hr:hover { background: #f0ece6; }
+.wx-hr-t { font-family: 'DM Mono', monospace; font-size: 0.5rem; color: var(--mist); }
+.wx-hr-i { font-size: 0.9rem; margin: 2px 0; }
+.wx-hr-c { font-family: 'DM Mono', monospace; font-size: 0.56rem; font-weight: 500; }
+.wx-hr-p { font-family: 'DM Mono', monospace; font-size: 0.48rem; color: #6b9ab8; margin-top: 1px; }
+
+/* Loading / empty / error states */
+.wx-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 36px 20px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--mist);
+  letter-spacing: 0.5px;
+}
+.wx-spinner {
+  width: 14px; height: 14px;
+  border: 2px solid #d4d0ca;
+  border-top-color: #6b9ab8;
+  border-radius: 50%;
+  animation: wxspin 0.7s linear infinite;
+}
+@keyframes wxspin { to { transform: rotate(360deg); } }
+.wx-placeholder {
+  padding: 32px 20px;
+  text-align: center;
+  font-size: 0.76rem;
+  color: #b0bcc8;
+  font-family: 'DM Mono', monospace;
+  line-height: 1.7;
+}
+.wx-placeholder em { display: block; font-style: normal; font-size: 1.1rem; margin-bottom: 8px; }
+.wx-err {
+  margin: 12px 0;
+  padding: 10px 14px;
+  background: #fef2f2;
+  border: 1px solid #f4aaaa;
+  border-radius: 8px;
+  font-size: 0.74rem;
+  color: #7a1a1a;
+}
+</style>
+
+
+
+<!-- ══ WEATHER MODAL ══ -->
+<div class="wx-modal-overlay" id="wxModalOverlay" onclick="closeWxModal(event)">
+  <div class="wx-modal" id="wxModal">
+    <div class="wx-modal-head">
+      <div>
+        <div class="wx-modal-title" id="wxModalTitle"></div>
+        <div class="wx-modal-sub" id="wxModalSub"></div>
+      </div>
+      <button class="wx-modal-close" onclick="closeWxModal()">✕</button>
+    </div>
+    <div class="wx-modal-body">
+      <div class="wx-modal-elev-tabs" id="wxModalTabs"></div>
+      <div id="wxModalPanes"></div>
+    </div>
+  </div>
+</div>
+<script>
+
+  let activeStop = 'all';
+  let activeCat  = 'overview';
+
+  function filterStop(stop, el) {
+    activeStop = stop;
+    document.querySelectorAll('.stop-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    applyFilters();
+  }
+
+  function filterCat(cat, el) {
+    activeCat = cat;
+    document.querySelectorAll('.cat-btn').forEach(b => { b.className = 'cat-btn'; });
+    el.classList.add('active-' + cat);
+    ['activity','travel','food'].forEach(c => {
+      const vh = document.getElementById('vh-' + c);
+      if (vh) vh.classList.toggle('showing', cat === c);
+    });
+    if (cat !== 'overview') {
+      document.querySelectorAll('.day-card.visible').forEach(card => card.classList.add('open'));
+    }
+    applyFilters();
+  }
+
+  function applyFilters() {
+    document.querySelectorAll('.day-card').forEach(card => {
+      const cardStop = card.dataset.stop;
+      const locationOk = activeStop === 'all' || cardStop === activeStop;
+      card.classList.toggle('visible', locationOk);
+      const items = card.querySelectorAll('.item[data-cat]');
+      const sectionLabels = card.querySelectorAll('.section-label');
+      const emptyEl = card.querySelector('.cat-empty');
+      if (activeCat === 'overview') {
+        items.forEach(item => item.classList.remove('hidden'));
+        sectionLabels.forEach(l => l.classList.remove('hidden'));
+        if (emptyEl) emptyEl.classList.remove('showing');
+      } else {
+        let anyVisible = false;
+        items.forEach(item => {
+          const show = item.dataset.cat === activeCat;
+          item.classList.toggle('hidden', !show);
+          if (show) anyVisible = true;
+        });
+        sectionLabels.forEach(l => l.classList.add('hidden'));
+        if (emptyEl) {
+          emptyEl.textContent = 'No ' + activeCat + ' items for this day.';
+          emptyEl.classList.toggle('showing', !anyVisible);
+        }
+      }
+    });
+    if (activeCat !== 'overview') {
+      document.querySelectorAll('.day-card.visible').forEach(card => card.classList.add('open'));
+    }
+    applyTodayCatFilter();
+  }
+
+  function toggleDay(header) {
+    const card = header.closest('.day-card');
+    card.classList.toggle('open');
+  
+    setTimeout(injectChips, 50);
+  }
+
+  /* ── COUNTDOWN / TODAY CARD ── */
+  const FLIGHT_DEPARTS = new Date('2026-05-08T20:20:00-04:00');
+
+  const TRIP_DAYS = [
+  { day:1, date:'May 9', stop:'innsbruck', title:'Fly in → Innsbruck', items:[
+    { cat:'travel', icon:'✈️', label:'IAD → Munich (MUC)', detail:'8:20pm EDT — arrive 2:25pm+1 · $650pp', badge:'cost' },
+    { cat:'travel', icon:'🚆', label:'Munich → Innsbruck Hbf', detail:'3:04pm–5:10pm (1 transfer, 2hrs) or 4:04pm–7:10pm (2 transfers, 3hrs)' },
+    { cat:'food',   icon:'🍽️', label:'Dinner: Stiftskeller', detail:'Traditional Tyrolean restaurant in Old Town' },
+    { cat:'food',   icon:'🥐', label:'Strudel Café Kröll', detail:'Famous apple strudel in Innsbruck' },
+    { cat:'travel', icon:'🏨', label:'Hotel: Marktbar Studios', detail:'2BR · $908 total · Free cancel by 5/9 · Free Innsbruck Card for local bus', badge:'booked' },
+  ]},
+  { day:2, date:'May 10', stop:'innsbruck', title:'Day Trip: Garmisch', items:[
+    { cat:'travel', icon:'🚆', label:'Train to Garmisch', detail:'6:38am–7:57am Innsbruck→Garmisch-Partenkirchen (~1hr 20min)' },
+    { cat:'travel', icon:'🚌', label:'Bus 314 → Eibsee', detail:'8:13–8:45am or 9:13–9:45am (45min) · Day ticket €7 or €2.10 one-way' },
+    { cat:'activity', icon:'🥾', label:'Lake Eibsee Loop · 4.5mi', detail:'Stunning lake loop with Zugspitze as backdrop. Start on right side.' },
+    { cat:'activity', icon:'🚡', label:'Zugspitze Cable Car · €69pp', detail:'Tallest mountain in Germany! Cogwheel train CLOSED from May 4 — cable car only. Tickets may open 30 days ahead.', badge:'warn' },
+    { cat:'food',   icon:'🍽️', label:'Lunch: Panorama Lounge 2962', detail:'Mountain restaurant at 2962m summit' },
+    { cat:'travel', icon:'🚌', label:'Bus Eibsee → Garmisch', detail:'1:09–1:41pm or 2:09–2:41pm (45min) · Runs every hour' },
+    { cat:'activity', icon:'🥾', label:'Partnachklamm Gorge · €10', detail:'Dramatic gorge hike · 30min walk one way' },
+    { cat:'activity', icon:'🚡', label:'Alt: Mount Wank Cable Car · €30', detail:'1.4mi loop (Wank–Ameisberg–Eckenberg) if plans change', badge:'tip' },
+    { cat:'food',   icon:'🍽️', label:'Dinner in Garmisch', detail:'~1hr for dinner before return train' },
+    { cat:'travel', icon:'🚆', label:'Return to Innsbruck', detail:'6:02pm–7:23pm (RB6) Garmisch→Innsbruck (~1hr 20min)' },
+  ]},
+  { day:3, date:'May 11', stop:'bolzano', title:'Nordkette → Bolzano', items:[
+    { cat:'activity', icon:'🚡', label:'Nordkette 3 Cable Cars', detail:'Top of Innsbruck · Time slot BOOKED ascend 8–9:30am · $208 total for 4', badge:'booked' },
+    { cat:'food',   icon:'☕', label:'Breakfast at Cloud 9 / Seegrube', detail:'Coffee stop at the Seegrube station' },
+    { cat:'activity', icon:'🥾', label:'Goethe Trail · 3.7mi · 800ft vert', detail:'⭐ Top choice · Popular trail, great views at top · Weather dependent — may need spikes', badge:'tip' },
+    { cat:'activity', icon:'🥾', label:'Alt: Hafelekarspitze Loop · 3mi · 1.5k vert', detail:'Start at Seegrube, hike round-trip to summit · Good if Goethe Trail too snowy' },
+    { cat:'activity', icon:'🥾', label:'Alt: Seegrube–Langer Sattel · 3mi OB · 1.3k vert', detail:'Challenging sections but great views the whole hike' },
+    { cat:'food',   icon:'🍽️', label:'Lunch by the Inn River', detail:'Walk by the water in Innsbruck Old Town' },
+    { cat:'travel', icon:'🚆', label:'Train to Bolzano', detail:'Skip Eurorail — buy S3 ticket (€11) to Brenner + use Bolzano Card to Bolzano · 2hr 10min · Runs every 30min', badge:'tip' },
+    { cat:'travel', icon:'🏨', label:'Hotel: Stiegl Scala, Bolzano', detail:'2 rooms · $791 total · Free cancel by 5/8 · Free Bolzano Card for bus/cable car · Free luggage storage', badge:'booked' },
+  ]},
+  { day:4, date:'May 12', stop:'bolzano', title:'Dolomites: Val Gardena', items:[
+    { cat:'travel', icon:'🚆', label:'Train+Bus → Malga Zannes', detail:'6:32–8:26am train to Brixen then bus 330 → Malga Zannes (1hr 50min total)' },
+    { cat:'activity', icon:'🥾', label:'Zanser Alm–Schluterhutte–Kaserill Alm · 5.8mi · 2k vert', detail:'Dramatic Dolomites hike — may need spikes at higher elevations' },
+    { cat:'travel', icon:'🚌', label:'Bus to Ortisei', detail:'12:35–2:25pm or 1:35–3:26pm (bus 330-351) · 1hr 50min' },
+    { cat:'activity', icon:'🥾', label:'Ortisei–St. James Meadow Hike · 3.4mi RT', detail:'No lift required · Beautiful meadow walk' },
+    { cat:'travel', icon:'🚌', label:'Bus 350 → Bolzano', detail:'5:59–6:57pm or 6:59–7:57pm (1hr) · Can reverse: take 7:26am bus to Ortisei first' },
+    { cat:'activity', icon:'🚡', label:'Backup: Castelrotto + Marinzen Cable Car · €20 RT', detail:'Bus 170 Bolzano→Castelrotto (50min, every 30min) · 4.3mi hike or cable car down', badge:'tip' },
+    { cat:'activity', icon:'🥾', label:'Backup: Guncina Promenade · 1.7mi RT', detail:'Easy hike in Bolzano town if weather is bad' },
+  ]},
+  { day:5, date:'May 13', stop:'como', title:'Ritten Plateau → Lake Como', items:[
+    { cat:'activity', icon:'🚡', label:'Ritten Cable Car + Train', detail:'Sit on right side for best views going up · Runs every 30min' },
+    { cat:'activity', icon:'🥾', label:'Earth Pyramids Hike · 2.9mi RT', detail:'Unique geological formations on the Renon plateau' },
+    { cat:'food',   icon:'☕', label:'Brunch: Café Lintner', detail:'Sit on left side for best views on return train' },
+    { cat:'travel', icon:'🚆', label:'Train to Lake Como', detail:'2:25pm–6:49pm Bolzano→Como S. Giovanni (4hr 25min, 1 transfer) · Seats reserved for 2nd train', badge:'booked' },
+    { cat:'activity', icon:'🌅', label:'Sunset over Lake Como · 8:49pm', detail:'Evening stroll along the lakefront' },
+    { cat:'food',   icon:'🍽️', label:'Dinner: Rino or L\'ora Della Pasta', detail:'Dinner ideas in Como (or quick lunch next day)' },
+    { cat:'travel', icon:'🏨', label:'Hotel: Suite Cecilia, Como', detail:'2BR house · $355 · Free cancel by 5/11 · Washing machine · Free crib · Free luggage storage', badge:'booked' },
+  ]},
+  { day:6, date:'May 14', stop:'zermatt', title:'Villa Balbianello → Zermatt', items:[
+    { cat:'travel', icon:'🚌', label:'Bus C110 → Lenno', detail:'6:39–7:29am or 7:54–8:41am (50min) · Alt: 7:32am ferry Como→Menaggio' },
+    { cat:'food',   icon:'☕', label:'Breakfast: Bar Pasticceria Tremezzina', detail:'Pastries and coffee near the ferry stop' },
+    { cat:'activity', icon:'🏛️', label:'Villa del Balbianello · €22/pp', detail:'Opens 10am · 20min walk from ferry · Buy reserved time tickets ahead!', badge:'warn' },
+    { cat:'travel', icon:'⛴️', label:'Ferry Lenno → Como · 1.5hrs', detail:'12:06–1:40pm · 7min walk ferry→hotel for luggage · 10min hotel→train station' },
+    { cat:'travel', icon:'🚆', label:'Como → Zermatt · 5hrs', detail:'2:36pm–7:50pm Como S. Giovanni → Zermatt' },
+    { cat:'activity', icon:'🌅', label:'Matterhorn at Sunset · 8:53pm', detail:'First views of the Matterhorn from Zermatt' },
+    { cat:'travel', icon:'🏨', label:'Hotel: Apartments Patricia', detail:'2BR w/ balcony · $495 · Free cancel by 4/30 · Free crib · Check in at Alpen Resort', badge:'booked' },
+  ]},
+  { day:7, date:'May 15', stop:'zermatt', title:'Gornergrat + Matterhorn', items:[
+    { cat:'activity', icon:'🚂', label:'Gornergrat Railway · 7am', detail:'Zermatt→Gornergrat (30–40min) · €141 RT/pp · Sunrise 5:58am' },
+    { cat:'activity', icon:'🥾', label:'Hike Down → Riffelberg / Riffelalp', detail:'Depending on snow levels · Or hike Riffelalp→Furi 2.5mi · Take train down + gondola to Furi' },
+    { cat:'activity', icon:'⛷️', label:'Alt: Ski the Matterhorn!', detail:'Nik\'s proposal: Ski pass €99 + rentals €40 = €139pp (cheaper than train!) · 9am–12pm skiing with Matterhorn views', badge:'tip' },
+    { cat:'food',   icon:'🍽️', label:'Lunch in Furi', detail:'12:15–1:15pm at Furi station' },
+    { cat:'activity', icon:'🥾', label:'Suspension Bridge + Furi → Zermatt', detail:'1:30–2:30pm suspension bridge hike · Then 2mi hike Furi→Zermatt · Back by 3:00–3:30pm' },
+    { cat:'travel', icon:'🚆', label:'Train → Interlaken', detail:'3:37–5:57pm or 4:06–7:21pm or 4:37–7:53pm · ~2hr 15min, 2 transfers · Runs every 30min' },
+    { cat:'travel', icon:'🏨', label:'Hotel: Heart of Interlaken', detail:'1 king + 2 bunks · 2 bath · $931 · Free cancel by 4/16 · Washing machine · Blumenstrasse 2', badge:'booked' },
+  ]},
+  { day:8, date:'May 16', stop:'interlaken', title:'Oeschinen Lake + Schilthorn', items:[
+    { cat:'travel', icon:'🚆', label:'Train → Kandersteg · 6:29am', detail:'6:29–7:40am or 7:33–8:40am (1hr, 1 transfer) · 15min walk to cable car' },
+    { cat:'activity', icon:'🚡', label:'Oeschinensee Cable Car', detail:'Time slot BOOKED ascend 8:30–10am · 144 CHF total for 4', badge:'booked' },
+    { cat:'activity', icon:'🥾', label:'Oeschinen Lake Trails', detail:'C trail: walk to lake · D trail: panorama path · G trail: mountain hiking · Check openings ahead of time' },
+    { cat:'food',   icon:'🍽️', label:'Mountain Restaurant Lunch', detail:'Lunch at the lake before heading back' },
+    { cat:'travel', icon:'🚆', label:'Train → Interlaken', detail:'11:14–12:26pm or 12:14–1:28pm · Leaves every hour' },
+    { cat:'travel', icon:'🚆', label:'Interlaken → Lauterbrunnen → Mürren', detail:'22min train + Grütschalp cable car + 11min train · Covered with Eurorail pass' },
+    { cat:'activity', icon:'🚡', label:'Schilthorn Cable Car · €68 w/ Eurorail', detail:'Mürren→Birg→Schilthorn · Steepest cable car in the world! · Last return lift 5:50pm', badge:'warn' },
+    { cat:'activity', icon:'😱', label:'Thrill Walk at Birg', detail:'Glass walkway + tightrope at Birg station' },
+    { cat:'food',   icon:'🍽️', label:'Piz Gloria · 360° Revolving Restaurant', detail:'Panoramic restaurant at Schilthorn summit' },
+    { cat:'activity', icon:'🚡', label:'Alt: Allmendhubel Cable Car · €16', detail:'From Mürren · Scenic restaurant at top' },
+    { cat:'activity', icon:'⛴️', label:'Alt: Lake Brienz Boat Tour', detail:'Food cruise 16:07 · BLS cruise possibly free with Eurorail pass · 15:07–16:20 Interlaken→Brienz (1hr 20min)', badge:'tip' },
+  ]},
+  { day:9, date:'May 17', stop:'interlaken', title:'Fly Home via Zurich', items:[
+    { cat:'travel', icon:'🚆', label:'Interlaken → Zurich Airport · 5:01am', detail:'5:01–7:44am (2.5hrs, 2 transfers)' },
+    { cat:'travel', icon:'✈️', label:'ZRH → IAD · 10:25am', detail:'Arrive IAD ~5pm' },
+  ]},
+];
+
+  const TOTAL_DAYS = TRIP_DAYS.length;
+
+  function getTodayETDate() {
+    return new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+  }
+
+  function applyTodayCatFilter() {
+    const items = document.querySelectorAll('#todayItems .today-item');
+    if (!items.length) return;
+    items.forEach(item => {
+      if (activeCat === 'overview') item.classList.remove('hidden');
+      else item.classList.toggle('hidden', item.dataset.cat !== activeCat);
+    });
+  }
+
+  function formatDate(dateStr) {
+    const d = new Date(dateStr + 'T12:00:00');
+    return d.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
+  }
+
+  let countdownInterval = null;
+
+  function renderCountdown(card) {
+    card.style.display = 'block';
+    function tick() {
+      const diff = FLIGHT_DEPARTS - new Date();
+      if (diff <= 0) { clearInterval(countdownInterval); renderTodayCard(); return; }
+      const days    = Math.floor(diff / 86400000);
+      const hours   = Math.floor((diff % 86400000) / 3600000);
+      const minutes = Math.floor((diff % 3600000) / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
+      const cdD = document.getElementById('cd-d');
+      if (cdD) {
+        cdD.textContent = String(days).padStart(2,'0');
+        document.getElementById('cd-h').textContent = String(hours).padStart(2,'0');
+        document.getElementById('cd-m').textContent = String(minutes).padStart(2,'0');
+        document.getElementById('cd-s').textContent = String(seconds).padStart(2,'0');
+        return;
+      }
+      card.innerHTML = `
+        <div class="countdown-card">
+          <div class="cd-eyebrow">Departure countdown</div>
+          <div class="cd-units">
+            <div class="cd-unit"><div class="cd-num" id="cd-d">${String(days).padStart(2,'0')}</div><div class="cd-lbl">Days</div></div>
+            <div class="cd-sep">:</div>
+            <div class="cd-unit"><div class="cd-num" id="cd-h">${String(hours).padStart(2,'0')}</div><div class="cd-lbl">Hours</div></div>
+            <div class="cd-sep">:</div>
+            <div class="cd-unit"><div class="cd-num" id="cd-m">${String(minutes).padStart(2,'0')}</div><div class="cd-lbl">Min</div></div>
+            <div class="cd-sep">:</div>
+            <div class="cd-unit"><div class="cd-num" id="cd-s">${String(seconds).padStart(2,'0')}</div><div class="cd-lbl">Sec</div></div>
+          </div>
+          <div class="cd-flight-row">
+            <span class="cd-airport">IAD</span>
+            <span class="cd-arrow">✈ ─────────────</span>
+            <span class="cd-airport">MUC</span>
+          </div>
+          <div class="cd-flight-time">May 8 · 8:20pm EDT &nbsp;→&nbsp; May 9 · 2:25pm Munich local</div>
+        </div>`;
+    }
+    tick();
+    clearInterval(countdownInterval);
+    countdownInterval = setInterval(tick, 1000);
+  }
+
+  function renderDaySummary(card, dayData) {
+    card.style.display = 'block';
+    const progressPct = Math.round(((dayData.dayNum - 1) / (TOTAL_DAYS - 1)) * 100);
+    const itemsHtml = dayData.items.map(item => `
+      <div class="today-item" data-cat="${item.cat}">
+        <div class="today-item-icon" style="background:${item.bg}">${item.icon}</div>
+        <div>
+          <div class="today-item-label">${item.label}</div>
+          ${item.detail ? `<div class="today-item-detail">${item.detail}</div>` : ''}
+        </div>
+      </div>`).join('');
+    card.innerHTML = `
+      <div class="today-card">
+        <div class="today-header">
+          <div>
+            <div class="today-eyebrow">Today on your trip</div>
+            <div class="today-title">${dayData.title}</div>
+            <div class="today-date">${formatDate(dayData.date)}</div>
+          </div>
+          <div class="today-progress-wrap">
+            <div class="today-day-badge">${dayData.dayNum}</div>
+            <div class="today-day-of">of ${TOTAL_DAYS} days</div>
+          </div>
+        </div>
+        <div class="today-body" id="todayItems">${itemsHtml}</div>
+        <div class="today-footer">
+          <span>${dayData.stop.charAt(0).toUpperCase() + dayData.stop.slice(1)} · Day ${dayData.dayNum}</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span>${progressPct}% complete</span>
+            <div class="today-progress-bar"><div class="today-progress-fill" style="width:${progressPct}%"></div></div>
+          </div>
+        </div>
+      </div>`;
+    applyTodayCatFilter();
+  }
+
+  function renderTripComplete(card) {
+    card.style.display = 'block';
+    card.innerHTML = `
+      <div class="countdown-card" style="background:linear-gradient(135deg,#1a3530 0%,#1e4a3a 100%)">
+        <div class="cd-eyebrow" style="color:#88d4a4">Trip complete</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.8rem;color:#fff;margin-bottom:12px;line-height:1.2">Alps Adventure<br><em>Completed</em> 🏔</div>
+        <div class="cd-flight-row" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.1)">
+          <span style="font-family:'DM Mono',monospace;font-size:0.75rem;color:rgba(255,255,255,0.7)">May 8–17, 2026 · 9 days · 5 stops · IAD → ZRH</span>
+        </div>
+      </div>`;
+  }
+
+  function renderTodayCard() {
+    const card = document.getElementById('todayCard');
+    const nowET = new Date();
+    const todayStr = getTodayETDate();
+    if (nowET < FLIGHT_DEPARTS) { renderCountdown(card); return; }
+    const dayData = TRIP_DAYS.find(d => d.date === todayStr);
+    if (dayData) { renderDaySummary(card, dayData); return; }
+    const tripEnd = new Date('2026-05-17T23:59:59-04:00');
+    if (nowET > tripEnd) { renderTripComplete(card); return; }
+    card.style.display = 'none';
+  }
+
+  (function() {
+    const card = document.getElementById('todayCard');
+    card.style.display = 'block';
+    renderTodayCard();
+  })();
+
+  document.querySelector('.day-card').classList.add('open');
+
+  /* ── WEATHER DATA ── */
+  const HIKES = [
+    { id:'eibsee', name:'Lake Eibsee', day:'Day 2 · May 10', elev:[
+      { label:'Base',      sub:'Garmisch Town',   elev:2297,  icon:'🏘️', wx:{ avg:57, hi:63, lo:48,  feel:54, precip:20, rain:0.05, wind:6.9, code:'⛅', desc:'Partly cloudy', hourly:[{t:'08:00',i:'🌤️',c:52,p:10},{t:'09:00',i:'🌤️',c:54,p:10},{t:'10:00',i:'⛅',c:55,p:15},{t:'11:00',i:'⛅',c:57,p:15},{t:'12:00',i:'⛅',c:59,p:20},{t:'13:00',i:'⛅',c:61,p:20},{t:'14:00',i:'🌤️',c:63,p:15},{t:'15:00',i:'🌤️',c:61,p:15},{t:'16:00',i:'☀️',c:59,p:10},{t:'17:00',i:'☀️',c:55,p:5}]}},
+      { label:'Eibsee',    sub:'Lake trailhead',  elev:3281, icon:'🌲', wx:{ avg:52, hi:57, lo:43,  feel:48,  precip:25, rain:0.08, wind:10.1, code:'⛅', desc:'Partly cloudy', hourly:[{t:'08:00',i:'🌤️',c:46,p:10},{t:'09:00',i:'⛅',c:48,p:15},{t:'10:00',i:'⛅',c:50,p:20},{t:'11:00',i:'⛅',c:52,p:20},{t:'12:00',i:'⛅',c:54,p:25},{t:'13:00',i:'⛅',c:55,p:25},{t:'14:00',i:'⛅',c:57,p:20},{t:'15:00',i:'🌤️',c:55,p:15},{t:'16:00',i:'🌤️',c:54,p:10},{t:'17:00',i:'☀️',c:50,p:5}]}},
+      { label:'Zugspitze', sub:'Summit',           elev:9718, icon:'🏔️', wx:{ avg:30, hi:36,  lo:23, feel:21, precip:35, rain:0.0, wind:25.1,code:'🌨️',desc:'Snow possible', hourly:[{t:'08:00',i:'❄️',c:25,p:30},{t:'09:00',i:'🌨️',c:27,p:35},{t:'10:00',i:'🌨️',c:28,p:35},{t:'11:00',i:'⛅',c:30,p:30},{t:'12:00',i:'⛅',c:32,p:30},{t:'13:00',i:'⛅',c:34,p:25},{t:'14:00',i:'⛅',c:36,p:25},{t:'15:00',i:'🌨️',c:34,p:35},{t:'16:00',i:'❄️',c:30,p:40},{t:'17:00',i:'❄️',c:28,p:35}]}},
+    ]},
+    { id:'partnach', name:'Partnachklamm Gorge', day:'Day 2 · May 10', elev:[
+      { label:'Town',  sub:'Garmisch',       elev:2297,  icon:'🏘️', wx:{ avg:57, hi:63, lo:48,  feel:54, precip:20, rain:0.05, wind:6.9, code:'⛅', desc:'Partly cloudy',    hourly:[{t:'15:00',i:'⛅',c:61,p:15},{t:'16:00',i:'🌤️',c:61,p:10},{t:'17:00',i:'🌤️',c:59,p:10},{t:'18:00',i:'☀️',c:57,p:5}]}},
+      { label:'Gorge', sub:'Gorge entrance', elev:2953,  icon:'🪨', wx:{ avg:54, hi:59, lo:45,  feel:50, precip:25, rain:0.07, wind:4.5, code:'⛅', desc:'Gorge microclimate',hourly:[{t:'15:00',i:'⛅',c:57,p:20},{t:'16:00',i:'⛅',c:57,p:20},{t:'17:00',i:'🌤️',c:55,p:15},{t:'18:00',i:'🌤️',c:54,p:10}]}},
+      { label:'Upper', sub:'Gorge top',      elev:3609, icon:'🌲', wx:{ avg:50, hi:55, lo:43,  feel:46,  precip:28, rain:0.08, wind:7.8, code:'⛅', desc:'Partly cloudy',    hourly:[{t:'15:00',i:'⛅',c:54,p:25},{t:'16:00',i:'⛅',c:54,p:25},{t:'17:00',i:'⛅',c:52,p:20},{t:'18:00',i:'🌤️',c:50,p:15}]}},
+    ]},
+    { id:'nordkette', name:'Nordkette', day:'Day 3 · May 11', elev:[
+      { label:'City',      sub:'Innsbruck',   elev:1883,  icon:'🏘️', wx:{ avg:63, hi:70, lo:50, feel:61, precip:15, rain:0.03, wind:5.6, code:'☀️', desc:'Sunny',          hourly:[{t:'08:00',i:'☀️',c:54,p:5},{t:'09:00',i:'☀️',c:57,p:5},{t:'10:00',i:'☀️',c:61,p:10},{t:'11:00',i:'🌤️',c:64,p:10},{t:'12:00',i:'🌤️',c:68,p:15},{t:'13:00',i:'🌤️',c:70,p:15},{t:'14:00',i:'⛅',c:68,p:15},{t:'15:00',i:'⛅',c:66,p:15},{t:'16:00',i:'🌤️',c:64,p:10},{t:'17:00',i:'☀️',c:57,p:5}]}},
+      { label:'Seegrube',  sub:'Mid-station', elev:6250, icon:'🌲', wx:{ avg:46,  hi:54, lo:37,  feel:41,  precip:20, rain:0.06, wind:16.1, code:'⛅', desc:'Partly cloudy', hourly:[{t:'08:00',i:'🌤️',c:39,p:10},{t:'09:00',i:'☀️',c:43,p:10},{t:'10:00',i:'☀️',c:46,p:10},{t:'11:00',i:'🌤️',c:48,p:15},{t:'12:00',i:'⛅',c:52,p:20},{t:'13:00',i:'⛅',c:54,p:20},{t:'14:00',i:'⛅',c:52,p:20},{t:'15:00',i:'🌤️',c:48,p:10},{t:'16:00',i:'☀️',c:45,p:5},{t:'17:00',i:'☀️',c:43,p:5}]}},
+      { label:'Hafelekar', sub:'Summit',      elev:7657, icon:'🏔️', wx:{ avg:39,  hi:45,  lo:30, feel:32,  precip:25, rain:0.02, wind:26.8,code:'⛅', desc:'Partly cloudy', hourly:[{t:'08:00',i:'⛅',c:32,p:15},{t:'09:00',i:'🌤️',c:36,p:15},{t:'10:00',i:'🌤️',c:39,p:20},{t:'11:00',i:'⛅',c:41,p:20},{t:'12:00',i:'⛅',c:43,p:25},{t:'13:00',i:'⛅',c:45,p:25},{t:'14:00',i:'⛅',c:43,p:25},{t:'15:00',i:'🌤️',c:39,p:15},{t:'16:00',i:'🌤️',c:36,p:15},{t:'17:00',i:'⛅',c:34,p:15}]}},
+    ]},
+    { id:'seiseralm', name:'Seiser Alm / Monte Piz', day:'Day 4 · May 12', elev:[
+      { label:'Ortisei',   sub:'Village',     elev:4055, icon:'🏘️', wx:{ avg:55, hi:64, lo:45,  feel:52, precip:18, rain:0.04, wind:6.7, code:'🌤️',desc:'Mostly sunny',  hourly:[{t:'08:00',i:'☀️',c:46,p:5},{t:'09:00',i:'☀️',c:50,p:5},{t:'10:00',i:'🌤️',c:55,p:10},{t:'11:00',i:'🌤️',c:59,p:10},{t:'12:00',i:'🌤️',c:63,p:15},{t:'13:00',i:'⛅',c:64,p:20},{t:'14:00',i:'⛅',c:63,p:20},{t:'15:00',i:'🌤️',c:59,p:15},{t:'16:00',i:'☀️',c:55,p:5},{t:'17:00',i:'☀️',c:52,p:5}]}},
+      { label:'Alm',       sub:'Seiser Alm',  elev:6496, icon:'🌿', wx:{ avg:46,  hi:54, lo:37,  feel:41,  precip:22, rain:0.07, wind:13.4, code:'⛅', desc:'Partly cloudy', hourly:[{t:'08:00',i:'🌤️',c:39,p:10},{t:'09:00',i:'☀️',c:43,p:10},{t:'10:00',i:'🌤️',c:46,p:15},{t:'11:00',i:'🌤️',c:48,p:15},{t:'12:00',i:'⛅',c:52,p:20},{t:'13:00',i:'⛅',c:54,p:25},{t:'14:00',i:'⛅',c:52,p:25},{t:'15:00',i:'🌤️',c:48,p:15},{t:'16:00',i:'☀️',c:45,p:10},{t:'17:00',i:'☀️',c:41,p:5}]}},
+      { label:'Monte Piz', sub:'Summit',      elev:8409, icon:'🏔️', wx:{ avg:36,  hi:41,  lo:28, feel:27, precip:30, rain:0.01, wind:30.2,code:'🌨️',desc:'Snow possible', hourly:[{t:'08:00',i:'❄️',c:30,p:20},{t:'09:00',i:'⛅',c:34,p:20},{t:'10:00',i:'⛅',c:36,p:25},{t:'11:00',i:'⛅',c:37,p:25},{t:'12:00',i:'⛅',c:39,p:30},{t:'13:00',i:'⛅',c:41,p:30},{t:'14:00',i:'🌨️',c:37,p:35},{t:'15:00',i:'⛅',c:36,p:30},{t:'16:00',i:'⛅',c:34,p:25},{t:'17:00',i:'❄️',c:32,p:25}]}},
+    ]},
+    { id:'earthpyramids', name:'Earth Pyramids', day:'Day 5 · May 13', elev:[
+      { label:'Bolzano', sub:'Town',          elev:860,  icon:'🏘️', wx:{ avg:68, hi:77, lo:55, feel:66, precip:10, rain:0.02, wind:4.9, code:'☀️', desc:'Sunny',         hourly:[{t:'08:00',i:'☀️',c:57,p:5},{t:'09:00',i:'☀️',c:63,p:5},{t:'10:00',i:'☀️',c:68,p:5},{t:'11:00',i:'☀️',c:72,p:10},{t:'12:00',i:'🌤️',c:75,p:10},{t:'13:00',i:'🌤️',c:77,p:10},{t:'14:00',i:'🌤️',c:75,p:10},{t:'15:00',i:'☀️',c:72,p:5},{t:'16:00',i:'☀️',c:68,p:5},{t:'17:00',i:'☀️',c:64,p:5}]}},
+      { label:'Plateau', sub:'Ritten/Renon',  elev:3786, icon:'🌲', wx:{ avg:55, hi:63, lo:45,  feel:52, precip:15, rain:0.04, wind:10.1, code:'🌤️',desc:'Mostly sunny',  hourly:[{t:'08:00',i:'🌤️',c:46,p:5},{t:'09:00',i:'☀️',c:50,p:5},{t:'10:00',i:'☀️',c:54,p:10},{t:'11:00',i:'🌤️',c:57,p:10},{t:'12:00',i:'🌤️',c:61,p:15},{t:'13:00',i:'🌤️',c:63,p:15},{t:'14:00',i:'⛅',c:61,p:15},{t:'15:00',i:'🌤️',c:57,p:10},{t:'16:00',i:'☀️',c:54,p:5},{t:'17:00',i:'☀️',c:50,p:5}]}},
+      { label:'Ridge',   sub:'Pyramid view',  elev:4593, icon:'🪨', wx:{ avg:52, hi:57, lo:41,  feel:46,  precip:18, rain:0.05, wind:13.4, code:'🌤️',desc:'Mostly sunny',  hourly:[{t:'08:00',i:'🌤️',c:43,p:10},{t:'09:00',i:'☀️',c:46,p:10},{t:'10:00',i:'☀️',c:50,p:10},{t:'11:00',i:'🌤️',c:54,p:15},{t:'12:00',i:'🌤️',c:55,p:15},{t:'13:00',i:'⛅',c:57,p:20},{t:'14:00',i:'⛅',c:55,p:20},{t:'15:00',i:'🌤️',c:52,p:10},{t:'16:00',i:'☀️',c:48,p:5},{t:'17:00',i:'☀️',c:46,p:5}]}},
+    ]},
+    { id:'gornergrat', name:'Gornergrat / Furi', day:'Day 7 · May 15', elev:[
+      { label:'Zermatt',    sub:'Village',     elev:5315, icon:'🏘️', wx:{ avg:50, hi:57, lo:39,  feel:45,  precip:20, rain:0.06, wind:8.9, code:'🌤️',desc:'Mostly sunny',  hourly:[{t:'07:00',i:'☀️',c:41,p:5},{t:'08:00',i:'☀️',c:45,p:5},{t:'09:00',i:'☀️',c:48,p:5},{t:'10:00',i:'🌤️',c:52,p:10},{t:'11:00',i:'🌤️',c:54,p:15},{t:'12:00',i:'🌤️',c:55,p:15},{t:'13:00',i:'⛅',c:57,p:20},{t:'14:00',i:'⛅',c:55,p:20},{t:'15:00',i:'🌤️',c:52,p:10},{t:'16:00',i:'☀️',c:48,p:5}]}},
+      { label:'Riffelberg', sub:'Mid-mountain',elev:8471, icon:'🌲', wx:{ avg:37,  hi:45,  lo:28, feel:28, precip:28, rain:0.02, wind:21.3, code:'⛅', desc:'Partly cloudy', hourly:[{t:'07:00',i:'☀️',c:30,p:10},{t:'08:00',i:'☀️',c:34,p:10},{t:'09:00',i:'🌤️',c:37,p:15},{t:'10:00',i:'🌤️',c:39,p:20},{t:'11:00',i:'⛅',c:41,p:25},{t:'12:00',i:'⛅',c:43,p:25},{t:'13:00',i:'⛅',c:45,p:28},{t:'14:00',i:'⛅',c:43,p:28},{t:'15:00',i:'🌤️',c:39,p:15},{t:'16:00',i:'☀️',c:36,p:10}]}},
+      { label:'Gornergrat', sub:'Summit',      elev:10135, icon:'🏔️', wx:{ avg:28, hi:36,  lo:21, feel:16, precip:35, rain:0.0, wind:31.3,code:'🌨️',desc:'Snow possible', hourly:[{t:'07:00',i:'❄️',c:23,p:25},{t:'08:00',i:'❄️',c:25,p:25},{t:'09:00',i:'🌨️',c:27,p:30},{t:'10:00',i:'⛅',c:30,p:30},{t:'11:00',i:'⛅',c:32,p:35},{t:'12:00',i:'⛅',c:34,p:35},{t:'13:00',i:'⛅',c:36,p:35},{t:'14:00',i:'🌨️',c:32,p:40},{t:'15:00',i:'❄️',c:30,p:35},{t:'16:00',i:'❄️',c:27,p:30}]}},
+    ]},
+    { id:'oeschinen', name:'Oeschinen Lake', day:'Day 8 · May 16', elev:[
+      { label:'Kandersteg',sub:'Village',      elev:3858, icon:'🏘️', wx:{ avg:54, hi:61, lo:43,  feel:50, precip:22, rain:0.07, wind:7.8, code:'⛅', desc:'Partly cloudy', hourly:[{t:'07:00',i:'🌤️',c:45,p:5},{t:'08:00',i:'☀️',c:48,p:10},{t:'09:00',i:'🌤️',c:52,p:15},{t:'10:00',i:'⛅',c:54,p:20},{t:'11:00',i:'⛅',c:57,p:20},{t:'12:00',i:'⛅',c:59,p:22},{t:'13:00',i:'⛅',c:61,p:22},{t:'14:00',i:'🌤️',c:59,p:15},{t:'15:00',i:'🌤️',c:55,p:10},{t:'16:00',i:'☀️',c:50,p:5}]}},
+      { label:'Lake',      sub:'Oeschinen',    elev:5177, icon:'🌿', wx:{ avg:46,  hi:52, lo:37,  feel:41,  precip:28, rain:0.09, wind:11.2, code:'⛅', desc:'Partly cloudy', hourly:[{t:'07:00',i:'🌤️',c:39,p:10},{t:'08:00',i:'🌤️',c:43,p:15},{t:'09:00',i:'⛅',c:45,p:20},{t:'10:00',i:'⛅',c:46,p:25},{t:'11:00',i:'⛅',c:48,p:25},{t:'12:00',i:'⛅',c:50,p:28},{t:'13:00',i:'⛅',c:52,p:28},{t:'14:00',i:'🌤️',c:48,p:15},{t:'15:00',i:'🌤️',c:46,p:10},{t:'16:00',i:'☀️',c:43,p:5}]}},
+      { label:'Ridge',     sub:'Panorama path',elev:6562, icon:'🏔️', wx:{ avg:39,  hi:46,  lo:32,  feel:32,  precip:35, rain:0.03, wind:19.0, code:'🌨️',desc:'Snow possible', hourly:[{t:'07:00',i:'❄️',c:34,p:20},{t:'08:00',i:'⛅',c:36,p:25},{t:'09:00',i:'⛅',c:37,p:30},{t:'10:00',i:'⛅',c:41,p:30},{t:'11:00',i:'⛅',c:43,p:35},{t:'12:00',i:'⛅',c:45,p:35},{t:'13:00',i:'🌨️',c:43,p:35},{t:'14:00',i:'🌨️',c:41,p:35},{t:'15:00',i:'⛅',c:39,p:25},{t:'16:00',i:'❄️',c:36,p:20}]}},
+    ]},
+    { id:'schilthorn', name:'Schilthorn / Mürren', day:'Day 8 · May 16', elev:[
+      { label:'Valley',  sub:'Lauterbrunnen', elev:2612,  icon:'🏘️', wx:{ avg:59, hi:66, lo:46,  feel:55, precip:18, rain:0.05, wind:6.3, code:'🌤️',desc:'Mostly sunny',  hourly:[{t:'11:00',i:'🌤️',c:57,p:10},{t:'12:00',i:'🌤️',c:61,p:15},{t:'13:00',i:'⛅',c:64,p:18},{t:'14:00',i:'⛅',c:66,p:18},{t:'15:00',i:'🌤️',c:63,p:10},{t:'16:00',i:'☀️',c:59,p:5},{t:'17:00',i:'☀️',c:55,p:5}]}},
+      { label:'Mürren',  sub:'Village',       elev:5374, icon:'🌲', wx:{ avg:48,  hi:55, lo:37,  feel:43,  precip:25, rain:0.07, wind:14.5, code:'⛅', desc:'Partly cloudy', hourly:[{t:'11:00',i:'⛅',c:46,p:20},{t:'12:00',i:'⛅',c:50,p:22},{t:'13:00',i:'⛅',c:52,p:25},{t:'14:00',i:'⛅',c:54,p:25},{t:'15:00',i:'🌤️',c:52,p:20},{t:'16:00',i:'🌤️',c:50,p:15},{t:'17:00',i:'☀️',c:46,p:10}]}},
+      { label:'Summit',  sub:'Piz Gloria',    elev:9744, icon:'🏔️', wx:{ avg:30, hi:37,  lo:23, feel:18, precip:40, rain:0.0, wind:35.8,code:'🌨️',desc:'Snow likely',   hourly:[{t:'11:00',i:'🌨️',c:28,p:35},{t:'12:00',i:'⛅',c:32,p:38},{t:'13:00',i:'⛅',c:36,p:40},{t:'14:00',i:'⛅',c:37,p:40},{t:'15:00',i:'🌨️',c:34,p:42},{t:'16:00',i:'❄️',c:30,p:40},{t:'17:00',i:'❄️',c:27,p:38}]}},
+    ]},
+  ];
+
+  function tempColor(c) {
+    if (c <= 32) return '#7ab4d8'; if (c <= 43) return '#5a9ab8';
+    if (c <= 54) return '#6ab890'; if (c <= 64) return '#c8a840';
+    return '#d06040';
+  }
+  function precipColor(p) { return p < 25 ? '#4ecb71' : p < 50 ? '#e0c040' : '#e07050'; }
+
+  function renderCard(bodyEl, wx) {
+    const pc = precipColor(wx.precip), tc = tempColor(wx.avg);
+    const hrHtml = wx.hourly.map(h =>
+      '<div class="wx-hr"><div class="wx-hr-t">'+h.t+'</div><div class="wx-hr-i">'+h.i+'</div>' +
+      '<div class="wx-hr-c" style="color:'+tempColor(h.c)+'">'+h.c+'°F</div>' +
+      '<div class="wx-hr-p">'+(h.p>0?h.p+'%':'–')+'</div></div>'
+    ).join('');
+    bodyEl.innerHTML =
+      '<div class="wx-main"><div class="wx-main-icon">'+wx.code+'</div><div>' +
+      '<div class="wx-main-temp" style="color:'+tc+'">'+wx.avg+'°F</div>' +
+      '<div class="wx-main-desc">'+wx.desc+'</div><div class="wx-main-feel">Feels '+wx.feel+'°F</div></div></div>' +
+      '<div class="wx-stats">' +
+      '<div class="wx-stat"><div class="wx-stat-lbl">High / Low</div><div class="wx-stat-val">'+wx.hi+'° / '+wx.lo+'°F</div></div>' +
+      '<div class="wx-stat"><div class="wx-stat-lbl">Max Wind</div><div class="wx-stat-val">'+wx.wind+' mph</div></div>' +
+      '<div class="wx-stat"><div class="wx-stat-lbl">Total Rain</div><div class="wx-stat-val">'+wx.rain+' in</div></div>' +
+      '<div class="wx-stat"><div class="wx-stat-lbl">Rain Chance</div><div class="wx-stat-val" style="color:'+pc+'">'+wx.precip+'%</div></div>' +
+      (wx.visibility != null ? '<div class="wx-stat"><div class="wx-stat-lbl">Visibility</div><div class="wx-stat-val">'+wx.visibility+' mi</div></div>' : '') +
+      '</div>' +
+      (wx._live ? '<div style="font-family:\'DM Mono\',monospace;font-size:0.52rem;color:#88d4a4;letter-spacing:1px;text-transform:uppercase;margin-top:10px">● Live forecast</div>' : '') +
+      '<div class="wx-pbar-row"><span>Precipitation probability</span><span style="color:'+pc+'">'+wx.precip+'%</span></div>' +
+      '<div class="wx-pbar-track"><div class="wx-pbar-fill" style="width:'+wx.precip+'%;background:'+pc+'"></div></div>' +
+      '<div class="wx-hourly">'+hrHtml+'</div>';
+  }
+
+  function buildBanner(hike) {
+    const s = hike.elev[hike.elev.length-1].wx, b = hike.elev[0].wx;
+    if (s.lo <= 0)      return ['wx-banner-snow','❄️','Freezing at summit', s.lo+'°F low — expect ice and snow. Microspikes recommended.'];
+    if (s.precip >= 50) return ['wx-banner-rain','🌧️','High rain chance at altitude', s.precip+'% chance. Pack waterproofs.'];
+    if (s.wind >= 34)   return ['wx-banner-wind','💨','Strong summit winds', s.wind+' mph — cable cars may suspend. Confirm day-of.'];
+    if (b.precip < 25)  return ['wx-banner-good','✅','Looks great!', 'Low precipitation across all elevations. Enjoy the hike!'];
+    return null;
+  }
+
+  function initWeatherUI() {
+    const tabsEl = document.getElementById('wxTabs'), panelsEl = document.getElementById('wxPanels');
+    if (!tabsEl || !panelsEl) return;
+    tabsEl.innerHTML = ''; panelsEl.innerHTML = '';
+    HIKES.forEach(function(hike, i) {
+      const tab = document.createElement('div');
+      tab.className = 'wx-tab'+(i===0?' active':'');
+      tab.innerHTML = '<span>'+hike.name+'</span><span class="wx-tab-day">'+hike.day+'</span>';
+      tab.onclick = function() {
+        document.querySelectorAll('.wx-tab').forEach(function(t,j){t.classList.toggle('active',j===i);});
+        document.querySelectorAll('.wx-panel').forEach(function(p,j){p.classList.toggle('active',j===i);});
+      };
+      tabsEl.appendChild(tab);
+      const bInfo = buildBanner(hike);
+      const bannerHtml = bInfo ? '<div class="wx-banner '+bInfo[0]+'"><span class="wx-banner-icon">'+bInfo[1]+'</span><div><strong>'+bInfo[2]+'</strong>'+bInfo[3]+'</div></div>' : '';
+      const cardsHtml = hike.elev.map(function(e,ei) {
+        return '<div class="wx-card"><div class="wx-card-head"><span class="wx-card-icon">'+e.icon+'</span><span class="wx-card-label">'+e.label+'</span><span class="wx-card-elev">'+e.elev.toLocaleString()+'ft · '+e.sub+'</span></div><div class="wx-card-body" id="wxBody-'+i+'-'+ei+'"></div></div>';
+      }).join('');
+      const panel = document.createElement('div');
+      panel.className = 'wx-panel'+(i===0?' active':'');
+      panel.innerHTML = bannerHtml+'<div class="wx-grid">'+cardsHtml+'</div>';
+      panelsEl.appendChild(panel);
+      hike.elev.forEach(function(e,ei){ renderCard(document.getElementById('wxBody-'+i+'-'+ei), e.wx); });
+    });
+    const btn = document.getElementById('wxRefreshBtn');
+    if (btn && !btn.dataset.live) { btn.textContent='⟳ Load Live Forecasts'; btn.style.background='var(--peak)'; }
+  }
+  // Show loading skeleton, then auto-fetch live data
+  (function initWeatherLoading() {
+    var tabsEl = document.getElementById('wxTabs'), panelsEl = document.getElementById('wxPanels');
+    if (!tabsEl || !panelsEl) return;
+    tabsEl.innerHTML = ''; panelsEl.innerHTML = '';
+    HIKES.forEach(function(hike, i) {
+      var tab = document.createElement('div');
+      tab.className = 'wx-tab'+(i===0?' active':'');
+      tab.innerHTML = '<span>'+hike.name+'</span><span class="wx-tab-day">'+hike.day+'</span>';
+      tab.onclick = function() {
+        document.querySelectorAll('.wx-tab').forEach(function(t,j){t.classList.toggle('active',j===i);});
+        document.querySelectorAll('.wx-panel').forEach(function(p,j){p.classList.toggle('active',j===i);});
+      };
+      tabsEl.appendChild(tab);
+      var cardsHtml = hike.elev.map(function(e) {
+        return '<div class="wx-card"><div class="wx-card-head"><span class="wx-card-icon">'+e.icon+'</span><span class="wx-card-label">'+e.label+'</span><span class="wx-card-elev">'+e.elev.toLocaleString()+'ft · '+e.sub+'</span></div><div class="wx-card-body" style="padding:24px;text-align:center;color:#a0aab4"><div style="font-size:1.6rem;margin-bottom:6px;animation:pulse 1.5s ease-in-out infinite">⏳</div><div style="font-family:\'DM Mono\',monospace;font-size:0.6rem;letter-spacing:1px;text-transform:uppercase">Loading forecast…</div></div></div>';
+      }).join('');
+      var panel = document.createElement('div');
+      panel.className = 'wx-panel'+(i===0?' active':'');
+      panel.innerHTML = '<div class="wx-grid">'+cardsHtml+'</div>';
+      panelsEl.appendChild(panel);
+    });
+  })();
+
+  /* ── OPEN-METEO API INTEGRATION ── */
+  const HIKE_GEO = {
+    eibsee: { forecastDate:'2026-05-10', points:[
+      { lat:47.4917, lon:11.0958, elevM:700  },
+      { lat:47.4558, lon:10.9832, elevM:973  },
+      { lat:47.4211, lon:10.9856, elevM:2962 },
+    ]},
+    partnach: { forecastDate:'2026-05-10', points:[
+      { lat:47.4917, lon:11.0958, elevM:700  },
+      { lat:47.4590, lon:11.1115, elevM:900  },
+      { lat:47.4490, lon:11.1200, elevM:1100 },
+    ]},
+    nordkette: { forecastDate:'2026-05-11', points:[
+      { lat:47.2692, lon:11.3933, elevM:574  },
+      { lat:47.3064, lon:11.3878, elevM:1905 },
+      { lat:47.3125, lon:11.3833, elevM:2334 },
+    ]},
+    seiseralm: { forecastDate:'2026-05-12', points:[
+      { lat:46.5741, lon:11.6712, elevM:1236 },
+      { lat:46.5419, lon:11.6364, elevM:1980 },
+      { lat:46.5269, lon:11.6308, elevM:2563 },
+    ]},
+    earthpyramids: { forecastDate:'2026-05-13', points:[
+      { lat:46.4982, lon:11.3548, elevM:262  },
+      { lat:46.5352, lon:11.4306, elevM:1154 },
+      { lat:46.5440, lon:11.4350, elevM:1400 },
+    ]},
+    gornergrat: { forecastDate:'2026-05-15', points:[
+      { lat:46.0207, lon:7.7491, elevM:1620 },
+      { lat:46.0011, lon:7.7519, elevM:2582 },
+      { lat:45.9833, lon:7.7856, elevM:3089 },
+    ]},
+    oeschinen: { forecastDate:'2026-05-16', points:[
+      { lat:46.4944, lon:7.6725, elevM:1176 },
+      { lat:46.5000, lon:7.7300, elevM:1578 },
+      { lat:46.5050, lon:7.7350, elevM:2000 },
+    ]},
+    schilthorn: { forecastDate:'2026-05-16', points:[
+      { lat:46.5936, lon:7.9089, elevM:796  },
+      { lat:46.5592, lon:7.8925, elevM:1638 },
+      { lat:46.5567, lon:7.8342, elevM:2970 },
+    ]},
+  };
+
+  var WMO_ICONS = {
+    0:['☀️','Clear sky'], 1:['🌤️','Mainly clear'], 2:['⛅','Partly cloudy'], 3:['☁️','Overcast'],
+    45:['🌫️','Fog'], 48:['🌫️','Rime fog'],
+    51:['🌦️','Light drizzle'], 53:['🌦️','Drizzle'], 55:['🌧️','Dense drizzle'],
+    56:['🌧️','Freezing drizzle'], 57:['🌧️','Heavy freezing drizzle'],
+    61:['🌧️','Slight rain'], 63:['🌧️','Moderate rain'], 65:['🌧️','Heavy rain'],
+    66:['🌧️','Freezing rain'], 67:['🌧️','Heavy freezing rain'],
+    71:['🌨️','Slight snow'], 73:['🌨️','Moderate snow'], 75:['❄️','Heavy snow'], 77:['❄️','Snow grains'],
+    80:['🌦️','Light showers'], 81:['🌧️','Moderate showers'], 82:['🌧️','Heavy showers'],
+    85:['🌨️','Snow showers'], 86:['❄️','Heavy snow showers'],
+    95:['⛈️','Thunderstorm'], 96:['⛈️','T-storm w/ hail'], 99:['⛈️','T-storm w/ heavy hail'],
+  };
+
+  function fetchOpenMeteo(lat, lon, elevM) {
+    var url = 'https://api.open-meteo.com/v1/forecast'
+      + '?latitude=' + lat + '&longitude=' + lon + '&elevation=' + elevM
+      + '&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,weather_code,wind_speed_10m,wind_gusts_10m,visibility'
+      + '&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch'
+      + '&timezone=Europe/Berlin&forecast_days=16';
+    return fetch(url).then(function(r) {
+      if (!r.ok) throw new Error('API ' + r.status);
+      return r.json();
+    });
+  }
+
+  function parseOpenMeteoDay(data, dateStr) {
+    var h = data.hourly;
+    var dayIdx = [];
+    h.time.forEach(function(t, i) {
+      if (t.indexOf(dateStr) === 0) {
+        var hr = parseInt(t.split('T')[1].split(':')[0]);
+        if (hr >= 7 && hr <= 17) dayIdx.push(i);
+      }
+    });
+    if (dayIdx.length === 0) return null;
+
+    var temps = dayIdx.map(function(i){ return h.temperature_2m[i]; });
+    var feels = dayIdx.map(function(i){ return h.apparent_temperature[i]; });
+    var probs = dayIdx.map(function(i){ return h.precipitation_probability[i]; });
+    var rains = dayIdx.map(function(i){ return h.precipitation[i]; });
+    var winds = dayIdx.map(function(i){ return h.wind_speed_10m[i]; });
+    var gusts = dayIdx.map(function(i){ return h.wind_gusts_10m[i]; });
+    var codes = dayIdx.map(function(i){ return h.weather_code[i]; });
+    var vis   = h.visibility ? dayIdx.map(function(i){ return h.visibility[i]; }) : [];
+
+    var avg  = Math.round(temps.reduce(function(a,b){return a+b;},0) / temps.length);
+    var hi   = Math.round(Math.max.apply(null, temps));
+    var lo   = Math.round(Math.min.apply(null, temps));
+    var feel = Math.round(feels.reduce(function(a,b){return a+b;},0) / feels.length);
+    var maxPrecip = Math.round(Math.max.apply(null, probs));
+    var totalRain = parseFloat(rains.reduce(function(a,b){return a+b;},0).toFixed(2));
+    var maxWind   = parseFloat(Math.max.apply(null, winds).toFixed(1));
+
+    // dominant weather code
+    var cc = {};
+    codes.forEach(function(c){ cc[c] = (cc[c]||0)+1; });
+    var dominant = Object.keys(cc).sort(function(a,b){ return cc[b]-cc[a]; })[0];
+    var wmo = WMO_ICONS[dominant] || ['❓','Unknown'];
+
+    var hourly = dayIdx.map(function(i) {
+      var tStr = h.time[i].split('T')[1].substring(0,5);
+      var ic = WMO_ICONS[h.weather_code[i]] || ['❓'];
+      return { t:tStr, i:ic[0], c:Math.round(h.temperature_2m[i]), p:Math.round(h.precipitation_probability[i]) };
+    });
+
+    var avgVis = vis.length > 0
+      ? parseFloat((vis.reduce(function(a,b){return a+b;},0) / vis.length / 1609.34).toFixed(1))
+      : null;
+
+    return {
+      avg:avg, hi:hi, lo:lo, feel:feel,
+      precip:maxPrecip, rain:totalRain, wind:maxWind,
+      code:wmo[0], desc:wmo[1],
+      hourly:hourly,
+      visibility:avgVis,
+      _live:true
+    };
+  }
+
+  function loadAllWeather() {
+    var btn = document.getElementById('wxRefreshBtn');
+    if (btn) {
+      btn.textContent = '⏳ Fetching forecasts…';
+      btn.disabled = true;
+      btn.style.background = '#a0aab4';
+    }
+
+    var fetches = [];
+    HIKES.forEach(function(hike) {
+      var geo = HIKE_GEO[hike.id];
+      if (!geo) return;
+      hike.elev.forEach(function(elev, ei) {
+        var pt = geo.points[ei];
+        if (!pt) return;
+        fetches.push(
+          fetchOpenMeteo(pt.lat, pt.lon, pt.elevM)
+            .then(function(data){ return {hike:hike, ei:ei, data:data, date:geo.forecastDate}; })
+            .catch(function(e){ console.warn('Weather fetch failed:', hike.id, ei, e); return null; })
+        );
+      });
+    });
+
+    Promise.all(fetches).then(function(results) {
+      var anyLive = false, anyMissing = false;
+      results.forEach(function(r) {
+        if (!r) return;
+        var wx = parseOpenMeteoDay(r.data, r.date);
+        if (wx) { r.hike.elev[r.ei].wx = wx; anyLive = true; }
+        else { anyMissing = true; }
+      });
+
+      // Remove old chips then re-render everything
+      document.querySelectorAll('.wx-chip').forEach(function(c){ c.remove(); });
+      initWeatherUI();
+      injectChips();
+
+      // Update button
+      btn.disabled = false;
+      btn.onclick = loadAllWeather;
+      if (anyLive && !anyMissing) {
+        btn.textContent = '✓ Live forecast loaded';
+        btn.style.background = '#2d4a3e';
+        btn.dataset.live = '1';
+      } else if (anyMissing && !anyLive) {
+        btn.textContent = '📅 Too far out — try closer to May 8';
+        btn.style.background = '#7a5c00';
+        btn.dataset.live = '';
+      } else if (anyLive && anyMissing) {
+        btn.textContent = '✓ Partial forecast (some dates too far)';
+        btn.style.background = '#2d4a3e';
+        btn.dataset.live = '1';
+      } else {
+        btn.textContent = '⟳ Retry';
+        btn.style.background = 'var(--peak)';
+        btn.dataset.live = '';
+      }
+    });
+  }
+
+  // Auto-fetch on page load
+  loadAllWeather();
+
+  /* ── WEATHER CHIPS + MODAL ── */
+  const WX_MAP = [
+    { match:['Lake Eibsee'],                              hike:'eibsee',       elev:1, hour:'10:00' },
+    { match:['Zugspitze Cable Car','Panorama Lounge'],    hike:'eibsee',       elev:2, hour:'12:00' },
+    { match:['Partnachklamm','Gorge'],                    hike:'partnach',     elev:1, hour:'15:00' },
+    { match:['Nordkette','Cloud 9','Seegrube','Hiking'],  hike:'nordkette',    elev:1, hour:'09:00' },
+    { match:['Seiser Alm','Monte Piz','St. Jakob'],       hike:'seiseralm',    elev:1, hour:'10:00' },
+    { match:['Earth Pyramids','Ritten'],                  hike:'earthpyramids',elev:1, hour:'10:00' },
+    { match:['Gornergrat'],                               hike:'gornergrat',   elev:2, hour:'08:00' },
+    { match:['Riffelberg','Riffelalp','Furi','Suspension bridge'], hike:'gornergrat', elev:1, hour:'11:00' },
+    { match:['Oeschinensee','Oeschinen Lake','lake hike'],hike:'oeschinen',    elev:1, hour:'09:00' },
+    { match:['Schilthorn','Piz Gloria','Thrill Walk','Birg','Mürren'], hike:'schilthorn', elev:2, hour:'13:00' },
+  ];
+
+  function getWxEntry(text) {
+    text = text.toLowerCase();
+    for (let i=0;i<WX_MAP.length;i++) {
+      for (let j=0;j<WX_MAP[i].match.length;j++) {
+        if (text.indexOf(WX_MAP[i].match[j].toLowerCase())!==-1) return WX_MAP[i];
+      }
+    }
+    return null;
+  }
+  function getHikeById(id) { return HIKES.find(h=>h.id===id)||null; }
+  function getHourData(wx, hour) {
+    return wx.hourly.find(h=>h.t===hour) || wx.hourly[Math.floor(wx.hourly.length/2)];
+  }
+
+  function injectChips() {
+    const items = document.querySelectorAll('.item[data-cat="activity"]');
+    items.forEach(function(item) {
+      // Skip if chip already exists
+      if (item.querySelector('.wx-chip')) return;
+      
+      const labelEl = item.querySelector('.item-label');
+      if (!labelEl) return;
+      const text = labelEl.textContent||'';
+      const entry = getWxEntry(text);
+      if (!entry) return;
+      const hike = getHikeById(entry.hike);
+      if (!hike) return;
+      const e = hike.elev[entry.elev];
+      if (!e) return;
+      const h = getHourData(e.wx, entry.hour);
+      if (!h) return;
+      const tc = tempColor(h.c), pc = precipColor(h.p);
+      const chip = document.createElement('div');
+      chip.className = 'wx-chip';
+      chip.style.cssText = 'background:'+tc+'18;border-color:'+tc+'40';
+      chip.title = 'Click for full weather breakdown';
+      chip.innerHTML = '<span class="wx-chip-icon">'+h.i+'</span>' +
+        '<span class="wx-chip-temp" style="color:'+tc+'">'+h.c+'°F</span>' +
+        '<span class="wx-chip-sep">·</span>' +
+        '<span class="wx-chip-precip" style="color:'+pc+'">'+h.p+'% rain</span>' +
+        '<span class="wx-chip-hint">~'+entry.hour+' · '+e.sub+'</span>';
+      chip.onclick = function(ev) { ev.stopPropagation(); openWxModal(entry.hike, entry.elev); };
+      const detailEl = item.querySelector('.item-detail');
+      (detailEl||item.querySelector('.item-content')).appendChild(chip);
+      item.style.cursor = 'pointer';
+      item.onclick = function(ev) {
+        if (ev.target.closest('.wx-chip')) return;
+        openWxModal(entry.hike, entry.elev);
+      };
+    });
+  }
+
+  function openWxModal(hikeId, activeElevIdx) {
+    const hike = getHikeById(hikeId); if (!hike) return;
+    document.getElementById('wxModalTitle').textContent = hike.name;
+    document.getElementById('wxModalSub').textContent = hike.day+' · Alpine weather forecast';
+    const tabsEl = document.getElementById('wxModalTabs'), panesEl = document.getElementById('wxModalPanes');
+    tabsEl.innerHTML = ''; panesEl.innerHTML = '';
+    hike.elev.forEach(function(e,ei) {
+      const tab = document.createElement('button');
+      tab.className = 'wx-modal-etab'+(ei===activeElevIdx?' active':'');
+      tab.innerHTML = e.icon+' '+e.label+' <span class="wx-modal-etab-elev">'+e.elev.toLocaleString()+'ft</span>';
+      tab.onclick = function() {
+        document.querySelectorAll('.wx-modal-etab').forEach(function(t,j){t.classList.toggle('active',j===ei);});
+        document.querySelectorAll('.wx-modal-pane').forEach(function(p,j){p.classList.toggle('active',j===ei);});
+      };
+      tabsEl.appendChild(tab);
+      const pane = document.createElement('div');
+      pane.className = 'wx-modal-pane'+(ei===activeElevIdx?' active':'');
+      const body = document.createElement('div');
+      pane.appendChild(body); panesEl.appendChild(pane);
+      renderCard(body, e.wx);
+    });
+    document.getElementById('wxModalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeWxModal(ev) {
+    if (ev && ev.target !== document.getElementById('wxModalOverlay')) return;
+    document.getElementById('wxModalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ document.getElementById('wxModalOverlay').classList.remove('open'); document.body.style.overflow=''; }});
+
+  setTimeout(function() {
+    // Give DOM time to render all day cards
+    injectChips();
+  }, 100);
+
+</script>
+</body>
+</html>
