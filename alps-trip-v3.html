@@ -404,6 +404,109 @@
   .alltrails-link:hover { background: #c8e6c9; color: #1b5e20; }
   .alltrails-link svg { width: 10px; height: 10px; flex-shrink: 0; }
 
+  .directions-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 1px 8px 1px 6px;
+    border-radius: 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.3px;
+    font-weight: 500;
+    background: #e3f2fd;
+    color: #1565c0;
+    text-decoration: none;
+    margin-left: 6px;
+    vertical-align: middle;
+    transition: background 0.15s, color 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .directions-link:hover { background: #bbdefb; color: #0d47a1; }
+  .directions-link svg { width: 10px; height: 10px; flex-shrink: 0; }
+
+  /* Map choice overlay */
+  .map-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26,37,47,0.55);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+  .map-overlay.open { opacity: 1; pointer-events: auto; }
+  .map-modal {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 24px 22px;
+    max-width: 320px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    transform: translateY(16px);
+    transition: transform 0.2s;
+  }
+  .map-overlay.open .map-modal { transform: translateY(0); }
+  .map-modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--peak);
+    margin-bottom: 4px;
+  }
+  .map-modal-addr {
+    font-size: 0.72rem;
+    color: #7a8695;
+    margin-bottom: 18px;
+    line-height: 1.4;
+  }
+  .map-btns { display: flex; flex-direction: column; gap: 10px; }
+  .map-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 16px;
+    border-radius: 11px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+    border: none;
+    cursor: pointer;
+  }
+  .map-btn:active { transform: scale(0.97); }
+  .map-btn-apple {
+    background: #1a1a1a;
+    color: #fff;
+  }
+  .map-btn-apple:hover { background: #333; }
+  .map-btn-google {
+    background: #e8f0fe;
+    color: #1a73e8;
+    border: 1px solid #d2e3fc;
+  }
+  .map-btn-google:hover { background: #d2e3fc; }
+  .map-btn-icon { font-size: 1.2rem; line-height: 1; }
+  .map-modal-close {
+    margin-top: 14px;
+    font-size: 0.72rem;
+    color: #7a8695;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    padding: 6px 16px;
+  }
+  .map-modal-close:hover { color: var(--peak); }
+
   .section-label {
     font-family: 'DM Mono', monospace;
     font-size: 0.58rem;
@@ -912,7 +1015,7 @@
           <div class="section-label">Evening</div>
           <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Stiftskeller <span class="badge badge-tip">Local Pick</span></div><div class="item-detail">Classic Tyrolean cellar restaurant. Hearty, earthy, authentic. Great for jet-lag recovery dinner.</div></div></div>
           <div class="item" data-cat="food"><div class="item-icon icon-food">☕</div><div class="item-content"><div class="item-label">Strudel Café Kröll</div><div class="item-detail">Famous apple strudel. The move after a long travel day.</div></div></div>
-          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Marktbar Studios Boutique Aparthotel <span class="badge badge-booked">Booked</span></div><div class="item-detail">Nights 1–2 · 2BR · $908 total. Innsbruck Card included — covers local buses.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Marktbar Studios Boutique Aparthotel <span class="badge badge-booked">Booked</span> <button class="directions-link" onclick="openMapModal('Marktbar Studios','Marktbar Studios, Innsbruck, Austria')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>Directions</button></div><div class="item-detail">Nights 1–2 · 2BR · $908 total. Innsbruck Card included — covers local buses.</div></div></div>
           <div class="cat-empty"></div>
         </div>
       </div>
@@ -963,7 +1066,7 @@
           <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Lunch by the Inn River, Innsbruck</div><div class="item-detail">Riverside lunch in Old Town before departing south.</div></div></div>
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Innsbruck → Bolzano <span class="badge badge-tip">Skip Eurorail</span></div><div class="item-detail">S3 to Brenner (€11/pp) then Bolzano Card covers the rest. ~2hr 10min, runs every 30min.</div></div></div>
           <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Dinner in Bolzano: Trattoria Filo d'Olio or Ristorante Argentieri</div><div class="item-detail">South Tyrolean cuisine — halfway between Italian and Austrian. Explore the old piazzas.</div></div></div>
-          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Hotel Stiegl Scala <span class="badge badge-booked">Booked</span></div><div class="item-detail">Nights 3–4 · 2 rooms · $791. Bolzano Card included. Luggage storage after checkout.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Hotel Stiegl Scala <span class="badge badge-booked">Booked</span> <button class="directions-link" onclick="openMapModal('Hotel Stiegl Scala','Via Brennero 11, 39100 Bolzano, Italy')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>Directions</button></div><div class="item-detail">Nights 3–4 · 2 rooms · $791. Bolzano Card included. Luggage storage after checkout.</div></div></div>
           <div class="cat-empty"></div>
         </div>
       </div>
@@ -1013,7 +1116,7 @@
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Bolzano → Como S. Giovanni <span class="badge badge-booked">Seats Reserved</span></div><div class="item-detail">2:25pm–6:49pm (4hr 25min, 1 transfer). Seats reserved on 2nd train. Pack snacks.</div></div></div>
           <div class="item" data-cat="activity"><div class="item-icon icon-view">🌅</div><div class="item-content"><div class="item-label">Sunset Over Lake Como — 8:49pm</div><div class="item-detail">Arrive in time for golden hour. Find a lakeside spot immediately on arrival.</div></div></div>
           <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Dinner: Rino or L'ora Della Pasta</div><div class="item-detail">L'ora also works as a casual quick lunch the next morning. Both solid.</div></div></div>
-          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Piazza del Lago – Suite Cecilia <span class="badge badge-booked">Booked</span></div><div class="item-detail">Night 5 · 2BR house · $355. Washing machine! 7min walk from ferry, 10min from train station.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Piazza del Lago – Suite Cecilia <span class="badge badge-booked">Booked</span> <button class="directions-link" onclick="openMapModal('Suite Cecilia','Via Giulio Rubini 7, Como, Italy')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>Directions</button></div><div class="item-detail">Night 5 · 2BR house · $355. Washing machine! 7min walk from ferry, 10min from train station.</div></div></div>
           <div class="cat-empty"></div>
         </div>
       </div>
@@ -1038,7 +1141,7 @@
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Como S. Giovanni → Zermatt <span class="badge badge-warn">5hrs</span></div><div class="item-detail">2:36pm–7:50pm (5 transfers) or 2:50pm–9:17pm (3 transfers). Scenery through Swiss Alps is stunning.</div></div></div>
           <div class="item" data-cat="activity"><div class="item-icon icon-view">🌅</div><div class="item-content"><div class="item-label">Matterhorn at Sunset — 8:53pm</div><div class="item-detail">First glimpse of the Matterhorn on arrival. Walk the village main street toward it.</div></div></div>
           <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Dinner in Zermatt Village</div><div class="item-detail">Car-free village. Easy to find great fondue or raclette on the main pedestrian street.</div></div></div>
-          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">House Theodul, Zermatt <span class="badge badge-booked">Booked</span></div><div class="item-detail">Night 6 · 2BR with crib · $313.50. Has elevator. 3min walk from train. Free luggage storage after checkout.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">House Theodul, Zermatt <span class="badge badge-booked">Booked</span> <button class="directions-link" onclick="openMapModal('House Theodul','Brantschenhaus 18, 3920 Zermatt, Switzerland')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>Directions</button></div><div class="item-detail">Night 6 · 2BR with crib · $313.50. Has elevator. 3min walk from train. Free luggage storage after checkout.</div></div></div>
           <div class="cat-empty"></div>
         </div>
       </div>
@@ -1063,7 +1166,7 @@
           <div class="item" data-cat="food"><div class="item-icon icon-food">🍽️</div><div class="item-content"><div class="item-label">Dinner in Zermatt</div><div class="item-detail">Car-free village. Find great fondue or raclette on the main pedestrian street.</div></div></div>
           <div class="section-label">Evening Transfer</div>
           <div class="item" data-cat="travel"><div class="item-icon icon-travel">🚂</div><div class="item-content"><div class="item-label">Zermatt → Interlaken West</div><div class="item-detail">6:06–8:28pm or 6:37–8:59pm (~2hr 15min, 2 transfers). Runs every 30min.</div></div></div>
-          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Heart of Interlaken Apartment <span class="badge badge-booked">Booked</span></div><div class="item-detail">Nights 7–8 · $931 · 1 king + 2 bunks, 2 baths. Washing machine. Blumenstrasse 2, Interlaken.</div></div></div>
+          <div class="item" data-cat="travel"><div class="item-icon icon-hotel">🏨</div><div class="item-content"><div class="item-label">Heart of Interlaken Apartment <span class="badge badge-booked">Booked</span> <button class="directions-link" onclick="openMapModal('Heart of Interlaken Apartment','Blumenstrasse 2, 3800 Interlaken, Switzerland')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>Directions</button></div><div class="item-detail">Nights 7–8 · $931 · 1 king + 2 bunks, 2 baths. Washing machine. Blumenstrasse 2, Interlaken.</div></div></div>
           <div class="cat-empty"></div>
         </div>
       </div>
@@ -2294,6 +2397,37 @@
     <span class="mob-tab-icon">ℹ️</span>Info
   </div>
 </nav>
+
+<!-- ── MAP DIRECTIONS OVERLAY ── -->
+<div class="map-overlay" id="mapOverlay" onclick="if(event.target===this)closeMapModal()">
+  <div class="map-modal">
+    <div class="map-modal-title" id="mapModalTitle"></div>
+    <div class="map-modal-addr" id="mapModalAddr"></div>
+    <div class="map-btns">
+      <a class="map-btn map-btn-apple" id="mapAppleLink" target="_blank" rel="noopener">
+        <span class="map-btn-icon">&#63743;</span> Open in Apple Maps
+      </a>
+      <a class="map-btn map-btn-google" id="mapGoogleLink" target="_blank" rel="noopener">
+        <span class="map-btn-icon">📍</span> Open in Google Maps
+      </a>
+    </div>
+    <button class="map-modal-close" onclick="closeMapModal()">Cancel</button>
+  </div>
+</div>
+
+<script>
+function openMapModal(name, address) {
+  var encoded = encodeURIComponent(address);
+  document.getElementById('mapModalTitle').textContent = name;
+  document.getElementById('mapModalAddr').textContent = address;
+  document.getElementById('mapAppleLink').href = 'https://maps.apple.com/?q=' + encoded;
+  document.getElementById('mapGoogleLink').href = 'https://www.google.com/maps/search/?api=1&query=' + encoded;
+  document.getElementById('mapOverlay').classList.add('open');
+}
+function closeMapModal() {
+  document.getElementById('mapOverlay').classList.remove('open');
+}
+</script>
 
 </body>
 </html>
