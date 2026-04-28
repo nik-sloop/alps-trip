@@ -1542,6 +1542,7 @@
 .wx-hr-i { font-size: 0.9rem; margin: 2px 0; }
 .wx-hr-c { font-family: 'DM Mono', monospace; font-size: 0.56rem; font-weight: 500; }
 .wx-hr-p { font-family: 'DM Mono', monospace; font-size: 0.48rem; color: #6b9ab8; margin-top: 1px; }
+.wx-hr-s { font-family: 'DM Mono', monospace; font-size: 0.48rem; color: #7ab4d8; margin-top: 1px; }
 
 /* Loading / empty / error states */
 .wx-loading {
@@ -1897,22 +1898,22 @@
     { id:'eibsee', name:'Lake Eibsee', day:'Day 2 · May 10', elev:[
       { label:'Base',      sub:'Garmisch Town',   elev:2297,  icon:'🏘️', wx:{ avg:57, hi:63, lo:48,  feel:54, precip:20, rain:0.05, wind:6.9, code:'⛅', desc:'Partly cloudy', hourly:[{t:'08:00',i:'🌤️',c:52,p:10},{t:'09:00',i:'🌤️',c:54,p:10},{t:'10:00',i:'⛅',c:55,p:15},{t:'11:00',i:'⛅',c:57,p:15},{t:'12:00',i:'⛅',c:59,p:20},{t:'13:00',i:'⛅',c:61,p:20},{t:'14:00',i:'🌤️',c:63,p:15},{t:'15:00',i:'🌤️',c:61,p:15},{t:'16:00',i:'☀️',c:59,p:10},{t:'17:00',i:'☀️',c:55,p:5}]}},
       { label:'Eibsee',    sub:'Lake trailhead',  elev:3281, icon:'🌲', wx:{ avg:52, hi:57, lo:43,  feel:48,  precip:25, rain:0.08, wind:10.1, code:'⛅', desc:'Partly cloudy', hourly:[{t:'08:00',i:'🌤️',c:46,p:10},{t:'09:00',i:'⛅',c:48,p:15},{t:'10:00',i:'⛅',c:50,p:20},{t:'11:00',i:'⛅',c:52,p:20},{t:'12:00',i:'⛅',c:54,p:25},{t:'13:00',i:'⛅',c:55,p:25},{t:'14:00',i:'⛅',c:57,p:20},{t:'15:00',i:'🌤️',c:55,p:15},{t:'16:00',i:'🌤️',c:54,p:10},{t:'17:00',i:'☀️',c:50,p:5}]}},
-      { label:'Zugspitze', sub:'Summit',           elev:9718, icon:'🏔️', wx:{ avg:30, hi:36,  lo:23, feel:21, precip:35, rain:0.0, wind:25.1,code:'🌨️',desc:'Snow possible', hourly:[{t:'08:00',i:'❄️',c:25,p:30},{t:'09:00',i:'🌨️',c:27,p:35},{t:'10:00',i:'🌨️',c:28,p:35},{t:'11:00',i:'⛅',c:30,p:30},{t:'12:00',i:'⛅',c:32,p:30},{t:'13:00',i:'⛅',c:34,p:25},{t:'14:00',i:'⛅',c:36,p:25},{t:'15:00',i:'🌨️',c:34,p:35},{t:'16:00',i:'❄️',c:30,p:40},{t:'17:00',i:'❄️',c:28,p:35}]}},
+      { label:'Zugspitze', sub:'Summit',           elev:9718, icon:'🏔️', wx:{ avg:30, hi:36,  lo:23, feel:21, precip:35, rain:0.0, snow:0.4, wind:25.1,code:'🌨️',desc:'Snow possible', hourly:[{t:'08:00',i:'❄️',c:25,p:30},{t:'09:00',i:'🌨️',c:27,p:35},{t:'10:00',i:'🌨️',c:28,p:35},{t:'11:00',i:'⛅',c:30,p:30},{t:'12:00',i:'⛅',c:32,p:30},{t:'13:00',i:'⛅',c:34,p:25},{t:'14:00',i:'⛅',c:36,p:25},{t:'15:00',i:'🌨️',c:34,p:35},{t:'16:00',i:'❄️',c:30,p:40},{t:'17:00',i:'❄️',c:28,p:35}]}},
     ]},
     { id:'partnach', name:'Partnachklamm Gorge', day:'Day 2 · May 10', elev:[
-      { label:'Town',  sub:'Garmisch',       elev:2297,  icon:'🏘️', wx:{ avg:57, hi:63, lo:48,  feel:54, precip:20, rain:0.05, wind:6.9, code:'⛅', desc:'Partly cloudy',    hourly:[{t:'15:00',i:'⛅',c:61,p:15},{t:'16:00',i:'🌤️',c:61,p:10},{t:'17:00',i:'🌤️',c:59,p:10},{t:'18:00',i:'☀️',c:57,p:5}]}},
-      { label:'Gorge', sub:'Gorge entrance', elev:2953,  icon:'🪨', wx:{ avg:54, hi:59, lo:45,  feel:50, precip:25, rain:0.07, wind:4.5, code:'⛅', desc:'Gorge microclimate',hourly:[{t:'15:00',i:'⛅',c:57,p:20},{t:'16:00',i:'⛅',c:57,p:20},{t:'17:00',i:'🌤️',c:55,p:15},{t:'18:00',i:'🌤️',c:54,p:10}]}},
-      { label:'Upper', sub:'Gorge top',      elev:3609, icon:'🌲', wx:{ avg:50, hi:55, lo:43,  feel:46,  precip:28, rain:0.08, wind:7.8, code:'⛅', desc:'Partly cloudy',    hourly:[{t:'15:00',i:'⛅',c:54,p:25},{t:'16:00',i:'⛅',c:54,p:25},{t:'17:00',i:'⛅',c:52,p:20},{t:'18:00',i:'🌤️',c:50,p:15}]}},
+      { label:'Town',  sub:'Garmisch',       elev:2297,  icon:'🏘️', wx:{ avg:57, hi:63, lo:48,  feel:54, precip:20, rain:0.05, wind:6.9, code:'⛅', desc:'Partly cloudy',    hourly:[{t:'07:00',i:'🌤️',c:48,p:5},{t:'08:00',i:'🌤️',c:50,p:10},{t:'09:00',i:'⛅',c:53,p:15},{t:'10:00',i:'⛅',c:55,p:15},{t:'11:00',i:'⛅',c:57,p:20},{t:'12:00',i:'⛅',c:60,p:20},{t:'13:00',i:'⛅',c:62,p:20},{t:'14:00',i:'🌤️',c:63,p:15},{t:'15:00',i:'⛅',c:61,p:15},{t:'16:00',i:'🌤️',c:61,p:10},{t:'17:00',i:'🌤️',c:59,p:10},{t:'18:00',i:'☀️',c:57,p:5}]}},
+      { label:'Gorge', sub:'Gorge entrance', elev:2953,  icon:'🪨', wx:{ avg:54, hi:59, lo:45,  feel:50, precip:25, rain:0.07, wind:4.5, code:'⛅', desc:'Gorge microclimate',hourly:[{t:'07:00',i:'🌤️',c:44,p:5},{t:'08:00',i:'⛅',c:47,p:10},{t:'09:00',i:'⛅',c:50,p:15},{t:'10:00',i:'⛅',c:52,p:20},{t:'11:00',i:'⛅',c:54,p:20},{t:'12:00',i:'⛅',c:56,p:25},{t:'13:00',i:'⛅',c:57,p:25},{t:'14:00',i:'⛅',c:57,p:20},{t:'15:00',i:'⛅',c:57,p:20},{t:'16:00',i:'⛅',c:57,p:20},{t:'17:00',i:'🌤️',c:55,p:15},{t:'18:00',i:'🌤️',c:54,p:10}]}},
+      { label:'Upper', sub:'Gorge top',      elev:3609, icon:'🌲', wx:{ avg:50, hi:55, lo:43,  feel:46,  precip:28, rain:0.08, wind:7.8, code:'⛅', desc:'Partly cloudy',    hourly:[{t:'07:00',i:'⛅',c:41,p:10},{t:'08:00',i:'⛅',c:43,p:15},{t:'09:00',i:'⛅',c:46,p:15},{t:'10:00',i:'⛅',c:48,p:20},{t:'11:00',i:'⛅',c:50,p:20},{t:'12:00',i:'⛅',c:53,p:25},{t:'13:00',i:'⛅',c:54,p:25},{t:'14:00',i:'⛅',c:54,p:25},{t:'15:00',i:'⛅',c:54,p:25},{t:'16:00',i:'⛅',c:54,p:25},{t:'17:00',i:'⛅',c:52,p:20},{t:'18:00',i:'🌤️',c:50,p:15}]}},
     ]},
     { id:'nordkette', name:'Nordkette', day:'Day 3 · May 11', elev:[
       { label:'City',      sub:'Innsbruck',   elev:1883,  icon:'🏘️', wx:{ avg:63, hi:70, lo:50, feel:61, precip:15, rain:0.03, wind:5.6, code:'☀️', desc:'Sunny',          hourly:[{t:'08:00',i:'☀️',c:54,p:5},{t:'09:00',i:'☀️',c:57,p:5},{t:'10:00',i:'☀️',c:61,p:10},{t:'11:00',i:'🌤️',c:64,p:10},{t:'12:00',i:'🌤️',c:68,p:15},{t:'13:00',i:'🌤️',c:70,p:15},{t:'14:00',i:'⛅',c:68,p:15},{t:'15:00',i:'⛅',c:66,p:15},{t:'16:00',i:'🌤️',c:64,p:10},{t:'17:00',i:'☀️',c:57,p:5}]}},
       { label:'Seegrube',  sub:'Mid-station', elev:6250, icon:'🌲', wx:{ avg:46,  hi:54, lo:37,  feel:41,  precip:20, rain:0.06, wind:16.1, code:'⛅', desc:'Partly cloudy', hourly:[{t:'08:00',i:'🌤️',c:39,p:10},{t:'09:00',i:'☀️',c:43,p:10},{t:'10:00',i:'☀️',c:46,p:10},{t:'11:00',i:'🌤️',c:48,p:15},{t:'12:00',i:'⛅',c:52,p:20},{t:'13:00',i:'⛅',c:54,p:20},{t:'14:00',i:'⛅',c:52,p:20},{t:'15:00',i:'🌤️',c:48,p:10},{t:'16:00',i:'☀️',c:45,p:5},{t:'17:00',i:'☀️',c:43,p:5}]}},
-      { label:'Hafelekar', sub:'Summit',      elev:7657, icon:'🏔️', wx:{ avg:39,  hi:45,  lo:30, feel:32,  precip:25, rain:0.02, wind:26.8,code:'⛅', desc:'Partly cloudy', hourly:[{t:'08:00',i:'⛅',c:32,p:15},{t:'09:00',i:'🌤️',c:36,p:15},{t:'10:00',i:'🌤️',c:39,p:20},{t:'11:00',i:'⛅',c:41,p:20},{t:'12:00',i:'⛅',c:43,p:25},{t:'13:00',i:'⛅',c:45,p:25},{t:'14:00',i:'⛅',c:43,p:25},{t:'15:00',i:'🌤️',c:39,p:15},{t:'16:00',i:'🌤️',c:36,p:15},{t:'17:00',i:'⛅',c:34,p:15}]}},
+      { label:'Hafelekar', sub:'Summit',      elev:7657, icon:'🏔️', wx:{ avg:39,  hi:45,  lo:30, feel:32,  precip:25, rain:0.02, snow:0.05, wind:26.8,code:'⛅', desc:'Partly cloudy', hourly:[{t:'08:00',i:'⛅',c:32,p:15},{t:'09:00',i:'🌤️',c:36,p:15},{t:'10:00',i:'🌤️',c:39,p:20},{t:'11:00',i:'⛅',c:41,p:20},{t:'12:00',i:'⛅',c:43,p:25},{t:'13:00',i:'⛅',c:45,p:25},{t:'14:00',i:'⛅',c:43,p:25},{t:'15:00',i:'🌤️',c:39,p:15},{t:'16:00',i:'🌤️',c:36,p:15},{t:'17:00',i:'⛅',c:34,p:15}]}},
     ]},
     { id:'seiseralm', name:'Seiser Alm / Monte Piz', day:'Day 4 · May 12', elev:[
       { label:'Ortisei',   sub:'Village',     elev:4055, icon:'🏘️', wx:{ avg:55, hi:64, lo:45,  feel:52, precip:18, rain:0.04, wind:6.7, code:'🌤️',desc:'Mostly sunny',  hourly:[{t:'08:00',i:'☀️',c:46,p:5},{t:'09:00',i:'☀️',c:50,p:5},{t:'10:00',i:'🌤️',c:55,p:10},{t:'11:00',i:'🌤️',c:59,p:10},{t:'12:00',i:'🌤️',c:63,p:15},{t:'13:00',i:'⛅',c:64,p:20},{t:'14:00',i:'⛅',c:63,p:20},{t:'15:00',i:'🌤️',c:59,p:15},{t:'16:00',i:'☀️',c:55,p:5},{t:'17:00',i:'☀️',c:52,p:5}]}},
       { label:'Alm',       sub:'Seiser Alm',  elev:6496, icon:'🌿', wx:{ avg:46,  hi:54, lo:37,  feel:41,  precip:22, rain:0.07, wind:13.4, code:'⛅', desc:'Partly cloudy', hourly:[{t:'08:00',i:'🌤️',c:39,p:10},{t:'09:00',i:'☀️',c:43,p:10},{t:'10:00',i:'🌤️',c:46,p:15},{t:'11:00',i:'🌤️',c:48,p:15},{t:'12:00',i:'⛅',c:52,p:20},{t:'13:00',i:'⛅',c:54,p:25},{t:'14:00',i:'⛅',c:52,p:25},{t:'15:00',i:'🌤️',c:48,p:15},{t:'16:00',i:'☀️',c:45,p:10},{t:'17:00',i:'☀️',c:41,p:5}]}},
-      { label:'Monte Piz', sub:'Summit',      elev:8409, icon:'🏔️', wx:{ avg:36,  hi:41,  lo:28, feel:27, precip:30, rain:0.01, wind:30.2,code:'🌨️',desc:'Snow possible', hourly:[{t:'08:00',i:'❄️',c:30,p:20},{t:'09:00',i:'⛅',c:34,p:20},{t:'10:00',i:'⛅',c:36,p:25},{t:'11:00',i:'⛅',c:37,p:25},{t:'12:00',i:'⛅',c:39,p:30},{t:'13:00',i:'⛅',c:41,p:30},{t:'14:00',i:'🌨️',c:37,p:35},{t:'15:00',i:'⛅',c:36,p:30},{t:'16:00',i:'⛅',c:34,p:25},{t:'17:00',i:'❄️',c:32,p:25}]}},
+      { label:'Monte Piz', sub:'Summit',      elev:8409, icon:'🏔️', wx:{ avg:36,  hi:41,  lo:28, feel:27, precip:30, rain:0.01, snow:0.15, wind:30.2,code:'🌨️',desc:'Snow possible', hourly:[{t:'08:00',i:'❄️',c:30,p:20},{t:'09:00',i:'⛅',c:34,p:20},{t:'10:00',i:'⛅',c:36,p:25},{t:'11:00',i:'⛅',c:37,p:25},{t:'12:00',i:'⛅',c:39,p:30},{t:'13:00',i:'⛅',c:41,p:30},{t:'14:00',i:'🌨️',c:37,p:35},{t:'15:00',i:'⛅',c:36,p:30},{t:'16:00',i:'⛅',c:34,p:25},{t:'17:00',i:'❄️',c:32,p:25}]}},
     ]},
     { id:'earthpyramids', name:'Earth Pyramids', day:'Day 5 · May 13', elev:[
       { label:'Bolzano', sub:'Town',          elev:860,  icon:'🏘️', wx:{ avg:68, hi:77, lo:55, feel:66, precip:10, rain:0.02, wind:4.9, code:'☀️', desc:'Sunny',         hourly:[{t:'08:00',i:'☀️',c:57,p:5},{t:'09:00',i:'☀️',c:63,p:5},{t:'10:00',i:'☀️',c:68,p:5},{t:'11:00',i:'☀️',c:72,p:10},{t:'12:00',i:'🌤️',c:75,p:10},{t:'13:00',i:'🌤️',c:77,p:10},{t:'14:00',i:'🌤️',c:75,p:10},{t:'15:00',i:'☀️',c:72,p:5},{t:'16:00',i:'☀️',c:68,p:5},{t:'17:00',i:'☀️',c:64,p:5}]}},
@@ -1922,17 +1923,22 @@
     { id:'gornergrat', name:'Zermatt Skiing / Furi', day:'Day 7 · May 15', elev:[
       { label:'Zermatt',    sub:'Village',     elev:5315, icon:'🏘️', wx:{ avg:50, hi:57, lo:39,  feel:45,  precip:20, rain:0.06, wind:8.9, code:'🌤️',desc:'Mostly sunny',  hourly:[{t:'07:00',i:'☀️',c:41,p:5},{t:'08:00',i:'☀️',c:45,p:5},{t:'09:00',i:'☀️',c:48,p:5},{t:'10:00',i:'🌤️',c:52,p:10},{t:'11:00',i:'🌤️',c:54,p:15},{t:'12:00',i:'🌤️',c:55,p:15},{t:'13:00',i:'⛅',c:57,p:20},{t:'14:00',i:'⛅',c:55,p:20},{t:'15:00',i:'🌤️',c:52,p:10},{t:'16:00',i:'☀️',c:48,p:5}]}},
       { label:'Riffelberg', sub:'Mid-mountain',elev:8471, icon:'🌲', wx:{ avg:37,  hi:45,  lo:28, feel:28, precip:28, rain:0.02, wind:21.3, code:'⛅', desc:'Partly cloudy', hourly:[{t:'07:00',i:'☀️',c:30,p:10},{t:'08:00',i:'☀️',c:34,p:10},{t:'09:00',i:'🌤️',c:37,p:15},{t:'10:00',i:'🌤️',c:39,p:20},{t:'11:00',i:'⛅',c:41,p:25},{t:'12:00',i:'⛅',c:43,p:25},{t:'13:00',i:'⛅',c:45,p:28},{t:'14:00',i:'⛅',c:43,p:28},{t:'15:00',i:'🌤️',c:39,p:15},{t:'16:00',i:'☀️',c:36,p:10}]}},
-      { label:'Gornergrat', sub:'Summit',      elev:10135, icon:'🏔️', wx:{ avg:28, hi:36,  lo:21, feel:16, precip:35, rain:0.0, wind:31.3,code:'🌨️',desc:'Snow possible', hourly:[{t:'07:00',i:'❄️',c:23,p:25},{t:'08:00',i:'❄️',c:25,p:25},{t:'09:00',i:'🌨️',c:27,p:30},{t:'10:00',i:'⛅',c:30,p:30},{t:'11:00',i:'⛅',c:32,p:35},{t:'12:00',i:'⛅',c:34,p:35},{t:'13:00',i:'⛅',c:36,p:35},{t:'14:00',i:'🌨️',c:32,p:40},{t:'15:00',i:'❄️',c:30,p:35},{t:'16:00',i:'❄️',c:27,p:30}]}},
+      { label:'Gornergrat', sub:'Summit',      elev:10135, icon:'🏔️', wx:{ avg:28, hi:36,  lo:21, feel:16, precip:35, rain:0.0, snow:0.8, wind:31.3,code:'🌨️',desc:'Snow possible', hourly:[{t:'07:00',i:'❄️',c:23,p:25},{t:'08:00',i:'❄️',c:25,p:25},{t:'09:00',i:'🌨️',c:27,p:30},{t:'10:00',i:'⛅',c:30,p:30},{t:'11:00',i:'⛅',c:32,p:35},{t:'12:00',i:'⛅',c:34,p:35},{t:'13:00',i:'⛅',c:36,p:35},{t:'14:00',i:'🌨️',c:32,p:40},{t:'15:00',i:'❄️',c:30,p:35},{t:'16:00',i:'❄️',c:27,p:30}]}},
     ]},
     { id:'oeschinen', name:'Oeschinen Lake', day:'Day 8 · May 16', elev:[
       { label:'Kandersteg',sub:'Village',      elev:3858, icon:'🏘️', wx:{ avg:54, hi:61, lo:43,  feel:50, precip:22, rain:0.07, wind:7.8, code:'⛅', desc:'Partly cloudy', hourly:[{t:'07:00',i:'🌤️',c:45,p:5},{t:'08:00',i:'☀️',c:48,p:10},{t:'09:00',i:'🌤️',c:52,p:15},{t:'10:00',i:'⛅',c:54,p:20},{t:'11:00',i:'⛅',c:57,p:20},{t:'12:00',i:'⛅',c:59,p:22},{t:'13:00',i:'⛅',c:61,p:22},{t:'14:00',i:'🌤️',c:59,p:15},{t:'15:00',i:'🌤️',c:55,p:10},{t:'16:00',i:'☀️',c:50,p:5}]}},
       { label:'Lake',      sub:'Oeschinen',    elev:5177, icon:'🌿', wx:{ avg:46,  hi:52, lo:37,  feel:41,  precip:28, rain:0.09, wind:11.2, code:'⛅', desc:'Partly cloudy', hourly:[{t:'07:00',i:'🌤️',c:39,p:10},{t:'08:00',i:'🌤️',c:43,p:15},{t:'09:00',i:'⛅',c:45,p:20},{t:'10:00',i:'⛅',c:46,p:25},{t:'11:00',i:'⛅',c:48,p:25},{t:'12:00',i:'⛅',c:50,p:28},{t:'13:00',i:'⛅',c:52,p:28},{t:'14:00',i:'🌤️',c:48,p:15},{t:'15:00',i:'🌤️',c:46,p:10},{t:'16:00',i:'☀️',c:43,p:5}]}},
-      { label:'Ridge',     sub:'Panorama path',elev:6562, icon:'🏔️', wx:{ avg:39,  hi:46,  lo:32,  feel:32,  precip:35, rain:0.03, wind:19.0, code:'🌨️',desc:'Snow possible', hourly:[{t:'07:00',i:'❄️',c:34,p:20},{t:'08:00',i:'⛅',c:36,p:25},{t:'09:00',i:'⛅',c:37,p:30},{t:'10:00',i:'⛅',c:41,p:30},{t:'11:00',i:'⛅',c:43,p:35},{t:'12:00',i:'⛅',c:45,p:35},{t:'13:00',i:'🌨️',c:43,p:35},{t:'14:00',i:'🌨️',c:41,p:35},{t:'15:00',i:'⛅',c:39,p:25},{t:'16:00',i:'❄️',c:36,p:20}]}},
+      { label:'Ridge',     sub:'Panorama path',elev:6562, icon:'🏔️', wx:{ avg:39,  hi:46,  lo:32,  feel:32,  precip:35, rain:0.03, snow:0.2, wind:19.0, code:'🌨️',desc:'Snow possible', hourly:[{t:'07:00',i:'❄️',c:34,p:20},{t:'08:00',i:'⛅',c:36,p:25},{t:'09:00',i:'⛅',c:37,p:30},{t:'10:00',i:'⛅',c:41,p:30},{t:'11:00',i:'⛅',c:43,p:35},{t:'12:00',i:'⛅',c:45,p:35},{t:'13:00',i:'🌨️',c:43,p:35},{t:'14:00',i:'🌨️',c:41,p:35},{t:'15:00',i:'⛅',c:39,p:25},{t:'16:00',i:'❄️',c:36,p:20}]}},
     ]},
     { id:'schilthorn', name:'Schilthorn / Mürren', day:'Day 8 · May 16', elev:[
-      { label:'Valley',  sub:'Lauterbrunnen', elev:2612,  icon:'🏘️', wx:{ avg:59, hi:66, lo:46,  feel:55, precip:18, rain:0.05, wind:6.3, code:'🌤️',desc:'Mostly sunny',  hourly:[{t:'11:00',i:'🌤️',c:57,p:10},{t:'12:00',i:'🌤️',c:61,p:15},{t:'13:00',i:'⛅',c:64,p:18},{t:'14:00',i:'⛅',c:66,p:18},{t:'15:00',i:'🌤️',c:63,p:10},{t:'16:00',i:'☀️',c:59,p:5},{t:'17:00',i:'☀️',c:55,p:5}]}},
-      { label:'Mürren',  sub:'Village',       elev:5374, icon:'🌲', wx:{ avg:48,  hi:55, lo:37,  feel:43,  precip:25, rain:0.07, wind:14.5, code:'⛅', desc:'Partly cloudy', hourly:[{t:'11:00',i:'⛅',c:46,p:20},{t:'12:00',i:'⛅',c:50,p:22},{t:'13:00',i:'⛅',c:52,p:25},{t:'14:00',i:'⛅',c:54,p:25},{t:'15:00',i:'🌤️',c:52,p:20},{t:'16:00',i:'🌤️',c:50,p:15},{t:'17:00',i:'☀️',c:46,p:10}]}},
-      { label:'Summit',  sub:'Piz Gloria',    elev:9744, icon:'🏔️', wx:{ avg:30, hi:37,  lo:23, feel:18, precip:40, rain:0.0, wind:35.8,code:'🌨️',desc:'Snow likely',   hourly:[{t:'11:00',i:'🌨️',c:28,p:35},{t:'12:00',i:'⛅',c:32,p:38},{t:'13:00',i:'⛅',c:36,p:40},{t:'14:00',i:'⛅',c:37,p:40},{t:'15:00',i:'🌨️',c:34,p:42},{t:'16:00',i:'❄️',c:30,p:40},{t:'17:00',i:'❄️',c:27,p:38}]}},
+      { label:'Valley',  sub:'Lauterbrunnen', elev:2612,  icon:'🏘️', wx:{ avg:59, hi:66, lo:46,  feel:55, precip:18, rain:0.05, wind:6.3, code:'🌤️',desc:'Mostly sunny',  hourly:[{t:'07:00',i:'☀️',c:48,p:5},{t:'08:00',i:'☀️',c:51,p:8},{t:'09:00',i:'🌤️',c:54,p:10},{t:'10:00',i:'🌤️',c:56,p:12},{t:'11:00',i:'🌤️',c:57,p:10},{t:'12:00',i:'🌤️',c:61,p:15},{t:'13:00',i:'⛅',c:64,p:18},{t:'14:00',i:'⛅',c:66,p:18},{t:'15:00',i:'🌤️',c:63,p:10},{t:'16:00',i:'☀️',c:59,p:5},{t:'17:00',i:'☀️',c:55,p:5}]}},
+      { label:'Mürren',  sub:'Village',       elev:5374, icon:'🌲', wx:{ avg:48,  hi:55, lo:37,  feel:43,  precip:25, rain:0.07, wind:14.5, code:'⛅', desc:'Partly cloudy', hourly:[{t:'07:00',i:'🌤️',c:39,p:10},{t:'08:00',i:'🌤️',c:41,p:12},{t:'09:00',i:'⛅',c:43,p:15},{t:'10:00',i:'⛅',c:45,p:18},{t:'11:00',i:'⛅',c:46,p:20},{t:'12:00',i:'⛅',c:50,p:22},{t:'13:00',i:'⛅',c:52,p:25},{t:'14:00',i:'⛅',c:54,p:25},{t:'15:00',i:'🌤️',c:52,p:20},{t:'16:00',i:'🌤️',c:50,p:15},{t:'17:00',i:'☀️',c:46,p:10}]}},
+      { label:'Summit',  sub:'Piz Gloria',    elev:9744, icon:'🏔️', wx:{ avg:30, hi:37,  lo:23, feel:18, precip:40, rain:0.0, snow:0.6, wind:35.8,code:'🌨️',desc:'Snow likely',   hourly:[{t:'07:00',i:'❄️',c:20,p:25},{t:'08:00',i:'🌨️',c:23,p:30},{t:'09:00',i:'🌨️',c:25,p:32},{t:'10:00',i:'🌨️',c:27,p:35},{t:'11:00',i:'🌨️',c:28,p:35},{t:'12:00',i:'⛅',c:32,p:38},{t:'13:00',i:'⛅',c:36,p:40},{t:'14:00',i:'⛅',c:37,p:40},{t:'15:00',i:'🌨️',c:34,p:42},{t:'16:00',i:'❄️',c:30,p:40},{t:'17:00',i:'❄️',c:27,p:38}]}},
+    ]},
+    { id:'glacierparadise', name:'Glacier Paradise Ski', day:'Day 7 · May 15', elev:[
+      { label:'Zermatt',  sub:'Village',         elev:5315,  icon:'🏘️', wx:{ avg:50, hi:57, lo:39,  feel:45,  precip:20, rain:0.06, snow:0,   wind:8.9,  code:'🌤️',desc:'Mostly sunny',      hourly:[{t:'07:00',i:'☀️',c:41,p:5},{t:'08:00',i:'☀️',c:45,p:5},{t:'09:00',i:'☀️',c:48,p:5},{t:'10:00',i:'🌤️',c:52,p:10},{t:'11:00',i:'🌤️',c:54,p:15},{t:'12:00',i:'🌤️',c:55,p:15},{t:'13:00',i:'⛅',c:57,p:20},{t:'14:00',i:'⛅',c:55,p:20},{t:'15:00',i:'🌤️',c:52,p:10},{t:'16:00',i:'☀️',c:48,p:5},{t:'17:00',i:'☀️',c:44,p:5}]}},
+      { label:'T. Steg',  sub:'Trockener Steg',  elev:9642,  icon:'⛷️', wx:{ avg:22, hi:30, lo:14,  feel:8,   precip:38, rain:0.0,  snow:1.5, wind:35.0, code:'🌨️',desc:'Snow / skiing',      hourly:[{t:'07:00',i:'🌨️',c:16,p:30},{t:'08:00',i:'🌨️',c:18,p:32},{t:'09:00',i:'❄️',c:20,p:35},{t:'10:00',i:'❄️',c:22,p:38},{t:'11:00',i:'🌨️',c:25,p:38},{t:'12:00',i:'🌨️',c:28,p:35},{t:'13:00',i:'⛅',c:30,p:32},{t:'14:00',i:'⛅',c:28,p:30},{t:'15:00',i:'🌨️',c:25,p:35},{t:'16:00',i:'❄️',c:22,p:35},{t:'17:00',i:'❄️',c:19,p:30}]}},
+      { label:'Glacier',  sub:'Paradise top',    elev:12740, icon:'🏔️', wx:{ avg:18, hi:26, lo:-2,  feel:-15, precip:50, rain:0.0,  snow:3.5, wind:50.0, code:'❄️',desc:'Heavy snow / extreme', hourly:[{t:'07:00',i:'❄️',c:2,p:45},{t:'08:00',i:'❄️',c:5,p:48},{t:'09:00',i:'❄️',c:8,p:50},{t:'10:00',i:'❄️',c:12,p:50},{t:'11:00',i:'❄️',c:16,p:50},{t:'12:00',i:'❄️',c:20,p:48},{t:'13:00',i:'❄️',c:24,p:45},{t:'14:00',i:'❄️',c:22,p:45},{t:'15:00',i:'❄️',c:18,p:48},{t:'16:00',i:'❄️',c:12,p:45},{t:'17:00',i:'❄️',c:6,p:42}]}},
     ]},
     { id:'zannes', name:'Zanser Alm / Dolomites', day:'Day 4 · May 12', elev:[
       { label:'Zannes', sub:'Trailhead',     elev:5512, icon:'🏘️', wx:{ avg:48, hi:55, lo:39,  feel:44,  precip:22, rain:0.06, wind:7.0, code:'⛅', desc:'Partly cloudy', hourly:[{t:'08:00',i:'☀️',c:41,p:10},{t:'09:00',i:'🌤️',c:45,p:15},{t:'10:00',i:'⛅',c:48,p:20},{t:'11:00',i:'⛅',c:52,p:22},{t:'12:00',i:'⛅',c:55,p:22},{t:'13:00',i:'⛅',c:54,p:20},{t:'14:00',i:'🌤️',c:50,p:15}]}},
@@ -1968,7 +1974,9 @@
     const hrHtml = wx.hourly.map(h =>
       '<div class="wx-hr"><div class="wx-hr-t">'+h.t+'</div><div class="wx-hr-i">'+h.i+'</div>' +
       '<div class="wx-hr-c" style="color:'+tempColor(h.c)+'">'+h.c+'°F</div>' +
-      '<div class="wx-hr-p">'+(h.p>0?h.p+'%':'–')+'</div></div>'
+      '<div class="wx-hr-p">'+(h.p>0?h.p+'%':'–')+'</div>' +
+      (h.s > 0 ? '<div class="wx-hr-s">❄ '+h.s+'"</div>' : '') +
+      '</div>'
     ).join('');
     bodyEl.innerHTML =
       '<div class="wx-main"><div class="wx-main-icon">'+wx.code+'</div><div>' +
@@ -1978,7 +1986,8 @@
       '<div class="wx-stat"><div class="wx-stat-lbl">High / Low</div><div class="wx-stat-val">'+wx.hi+'° / '+wx.lo+'°F</div></div>' +
       '<div class="wx-stat"><div class="wx-stat-lbl">Max Wind</div><div class="wx-stat-val">'+wx.wind+' mph</div></div>' +
       '<div class="wx-stat"><div class="wx-stat-lbl">Total Rain</div><div class="wx-stat-val">'+wx.rain+' in</div></div>' +
-      '<div class="wx-stat"><div class="wx-stat-lbl">Rain Chance</div><div class="wx-stat-val" style="color:'+pc+'">'+wx.precip+'%</div></div>' +
+      (wx.snow > 0 ? '<div class="wx-stat"><div class="wx-stat-lbl">Snowfall</div><div class="wx-stat-val" style="color:#7ab4d8">'+wx.snow+' in</div></div>' : '') +
+      '<div class="wx-stat"><div class="wx-stat-lbl">Precip Chance</div><div class="wx-stat-val" style="color:'+pc+'">'+wx.precip+'%</div></div>' +
       (wx.visibility != null ? '<div class="wx-stat"><div class="wx-stat-lbl">Visibility</div><div class="wx-stat-val">'+wx.visibility+' mi</div></div>' : '') +
       '</div>' +
       (wx._live ? '<div style="font-family:\'DM Mono\',monospace;font-size:0.52rem;color:#88d4a4;letter-spacing:1px;text-transform:uppercase;margin-top:10px">● Live forecast</div>' : '') +
@@ -2109,6 +2118,11 @@
       { lat:46.0100, lon:7.7450, elevM:1867 },
       { lat:45.9900, lon:7.7500, elevM:2939 },
     ]},
+    glacierparadise: { forecastDate:'2026-05-15', points:[
+      { lat:46.0207, lon:7.7491, elevM:1620 },
+      { lat:46.0003, lon:7.7378, elevM:2939 },
+      { lat:45.9763, lon:7.7337, elevM:3883 },
+    ]},
   };
 
   var WMO_ICONS = {
@@ -2127,7 +2141,7 @@
   function fetchOpenMeteo(lat, lon, elevM) {
     var url = 'https://api.open-meteo.com/v1/forecast'
       + '?latitude=' + lat + '&longitude=' + lon + '&elevation=' + elevM
-      + '&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,weather_code,wind_speed_10m,wind_gusts_10m,visibility'
+      + '&hourly=temperature_2m,apparent_temperature,precipitation_probability,precipitation,snowfall,weather_code,wind_speed_10m,wind_gusts_10m,visibility'
       + '&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch'
       + '&timezone=Europe/Berlin&forecast_days=16';
     return fetch(url).then(function(r) {
@@ -2151,6 +2165,7 @@
     var feels = dayIdx.map(function(i){ return h.apparent_temperature[i]; });
     var probs = dayIdx.map(function(i){ return h.precipitation_probability[i]; });
     var rains = dayIdx.map(function(i){ return h.precipitation[i]; });
+    var snows = h.snowfall ? dayIdx.map(function(i){ return h.snowfall[i]; }) : [];
     var winds = dayIdx.map(function(i){ return h.wind_speed_10m[i]; });
     var gusts = dayIdx.map(function(i){ return h.wind_gusts_10m[i]; });
     var codes = dayIdx.map(function(i){ return h.weather_code[i]; });
@@ -2162,6 +2177,7 @@
     var feel = Math.round(feels.reduce(function(a,b){return a+b;},0) / feels.length);
     var maxPrecip = Math.round(Math.max.apply(null, probs));
     var totalRain = parseFloat(rains.reduce(function(a,b){return a+b;},0).toFixed(2));
+    var totalSnow = snows.length > 0 ? parseFloat(snows.reduce(function(a,b){return a+b;},0).toFixed(2)) : 0;
     var maxWind   = parseFloat(Math.max.apply(null, winds).toFixed(1));
 
     // dominant weather code
@@ -2173,7 +2189,8 @@
     var hourly = dayIdx.map(function(i) {
       var tStr = h.time[i].split('T')[1].substring(0,5);
       var ic = WMO_ICONS[h.weather_code[i]] || ['❓'];
-      return { t:tStr, i:ic[0], c:Math.round(h.temperature_2m[i]), p:Math.round(h.precipitation_probability[i]) };
+      var snowHr = h.snowfall ? parseFloat(h.snowfall[i].toFixed(2)) : 0;
+      return { t:tStr, i:ic[0], c:Math.round(h.temperature_2m[i]), p:Math.round(h.precipitation_probability[i]), s:snowHr };
     });
 
     var avgVis = vis.length > 0
@@ -2182,7 +2199,7 @@
 
     return {
       avg:avg, hi:hi, lo:lo, feel:feel,
-      precip:maxPrecip, rain:totalRain, wind:maxWind,
+      precip:maxPrecip, rain:totalRain, snow:totalSnow, wind:maxWind,
       code:wmo[0], desc:wmo[1],
       hourly:hourly,
       visibility:avgVis,
@@ -2262,10 +2279,11 @@
     { match:['Zanser','Zannes','Schluterhütte','Schluterhutte','Kaserill'], hike:'zannes', elev:1, hour:'10:00' },
     { match:['Seiser Alm','Alpe di Siusi','Monte Piz','St. Jakob','St. James','Ortisei'], hike:'seiseralm', elev:1, hour:'10:00' },
     { match:['Earth Pyramids','Ritten'],                  hike:'earthpyramids',elev:1, hour:'10:00' },
-    { match:['Villa','Balbianello'],                      hike:'como',         elev:1, hour:'10:00' },
-    { match:['Ski Pass','Skiing','Ski the'],              hike:'furi',         elev:2, hour:'10:00' },
-    { match:['Suspension Bridge','Furi'],                 hike:'furi',         elev:0, hour:'14:00' },
-    { match:['Gornergrat'],                               hike:'gornergrat',   elev:2, hour:'08:00' },
+    { match:['Villa','Balbianello'],                      hike:'como',           elev:1, hour:'10:00' },
+    { match:['Ski Pass','Skiing','Ski the Matterhorn','Glacier Paradise','Klein Matterhorn'], hike:'glacierparadise', elev:2, hour:'10:00' },
+    { match:['Suspension Bridge','Furi'],                 hike:'furi',           elev:0, hour:'14:00' },
+    { match:['Riffelberg','Riffelalp'],                   hike:'gornergrat',     elev:1, hour:'11:00' },
+    { match:['Gornergrat'],                               hike:'gornergrat',     elev:2, hour:'08:00' },
     { match:['Oeschinensee','Oeschinen Lake','lake hike'],hike:'oeschinen',    elev:1, hour:'09:00' },
     { match:['Harder Kulm'],                              hike:'harderkulmm',  elev:2, hour:'13:00' },
     { match:['Schilthorn','Piz Gloria','Thrill Walk','Birg','Mürren'], hike:'schilthorn', elev:2, hour:'13:00' },
